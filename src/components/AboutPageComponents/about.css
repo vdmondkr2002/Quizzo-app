@@ -1,0 +1,11 @@
+.about{
+    /* margin-top: 5rem;
+    margin-right: 6rem;*/
+    margin-left: 6rem; 
+    width: 66rem!important;
+    background-color: #fff;
+    border: solid 2px #fff;
+    box-shadow:
+    inset 60px 0 120px #ff0,  /* left magenta */
+    inset -60px 0 120px #f00; /* right cyan */
+}
