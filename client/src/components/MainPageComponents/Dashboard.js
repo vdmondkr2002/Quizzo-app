@@ -1,5 +1,4 @@
 import React,{useEffect} from 'react';
-import './Dashboard.css';
 import Buttons from './Buttons'
 import { useHistory } from 'react-router';
 const Dashboard = ()=>{

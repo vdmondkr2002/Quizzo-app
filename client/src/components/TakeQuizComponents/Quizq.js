@@ -22,7 +22,7 @@ const Quizqs = ({setScore,score,question,answer,id}) => {
         if(ans === answer){
             if(prevResponse===undefined){
                 setScore(score+1)
-                dispatch(updateScore(score))
+                dispatch(updateScore(score+1))
                 dispatch(doneQuestion(id,ans,true))
             }
  

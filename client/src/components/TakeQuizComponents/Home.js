@@ -3,7 +3,7 @@ import {Input} from './Input'
 import QList from './QList'
 import {Link} from "react-router-dom"
 import {useSelector} from 'react-redux'
-import './Home.css'
+
 const Home = () => {
     const quizObj = useSelector(state=>state.quizqs)
     

@@ -8,12 +8,10 @@ import RegisterPage from './components/LandingPageCompoenents/RegisterPage'
 import LoginPage from './components/LandingPageCompoenents/LoginPage'
 import LandingPage from './components/LandingPageCompoenents/LandingPage'
 import TakeQuiz from './components/TakeQuizComponents/Home'
-import {GlobalProvider} from './context/GlobalState'
+import CreateQuestion from './components/CreateQuestionComponents/Form'
 
 const App = ()=> {
   return (
-    <GlobalProvider>
-
       <div className="App">      
         <Router>
         <Header/>
@@ -23,12 +21,12 @@ const App = ()=> {
             <Route exact path="/login" component={LoginPage}/>
             <Route exact path="/dashboard" component={Dashboard}/> 
             <Route exact path="/takequiz" component={TakeQuiz}/> 
+            <Route exact path="/createquestion" component={CreateQuestion}/>
             <Route exact path="/about" component={about}/>
             <Route exact path="/score" component={Score}/>
           </Switch>
         </Router>
-      </div>
-    </GlobalProvider>  
+      </div>  
   );
 }
 
