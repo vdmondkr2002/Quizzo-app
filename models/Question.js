@@ -3,19 +3,21 @@ const mongoose = require('mongoose')
 const QuestionSchema = mongoose.Schema({
     author:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'Users'
+        ref:'User'
     },
     question:{
         type:String,
         required:true
     },
     catId:{
-        type:String,
-        required:true
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Category'
     },
     createdAt:{
         type:Date,
         default:Date.now()
     }
-
 })
+
+const Question = mongoose.model('Question',QuestionSchema)
+module.exports = Question

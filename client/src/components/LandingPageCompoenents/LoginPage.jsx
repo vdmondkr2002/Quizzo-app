@@ -1,38 +1,37 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState } from 'react'
 import {useHistory} from 'react-router-dom'
+import {useDispatch,useSelector} from 'react-redux'
+import {signIn} from '../../actions/auth'
+
+const initialState = {
+    email:'',password:''
+}
+
 const LoginPage = ()=>{
-    const [email,setEmail] = useState('')
-    const [password,setPassword] = useState('')
-    const [err,setErr] = useState('')
+    const [formData,setFormData] = useState(initialState)
+    const authData = useSelector(state=>state.authData)
+    // const [err,setErr] = useState('')
+    const dispatch = useDispatch()
     const history = useHistory()
 
-    useEffect(() => {
-        const token = localStorage.getItem('token')
-        if(token!=='null'){
-            history.push('/dashboard')
-        }
-    },[history])
+    // useEffect(() => {
+    //     const token = localStorage.getItem('token')
+    //     if(token!=='null'){
+    //         history.push('/dashboard')
+    //     }
+    // },[history])
+
     const handleSubmit = async (e)=>{
         e.preventDefault()
-        try{
-            fetch('/api/v1/users/login',{
-                method:"POST",
-                headers:{
-                    "Content-Type":"application/json"
-                },
-                body:JSON.stringify({email,password})
-            }).then(response=>response.json())
-                .then(res=>{
-                    setErr(res.msg)
-                    if(res.token != null){
-                        localStorage.setItem('token',res.token)
-                        history.push('/dashboard')
-                    }
-                }).catch(err=>console.error(err))
-        }catch(err){
-            throw err
-        }  
+        dispatch(signIn(formData,history))
+        // setErr(authData?.msg)
     }
+
+    const handleChange = (e)=>{
+        setFormData({...formData,[e.target.name]:e.target.value})
+        // setErr('')
+    }
+
     return (
         <div className="row mt-5">
             <div className="col-md-6 m-auto">
@@ -40,9 +39,9 @@ const LoginPage = ()=>{
                     <h1 className="text-center mb-3">
                         <i className="fa fa-user-secret">Login</i></h1>  
                         {
-                            err?(
+                            authData?.msg?(
                                 <div className="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <strong>Note:</strong> {err}
+                                    <strong>Note:</strong> {authData.msg}
                                     <button type="button" className="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -58,8 +57,7 @@ const LoginPage = ()=>{
                                 name="email"
                                 className="form-control"
                                 placeholder="Enter Email"
-                                value={email}
-                                onChange={e=>setEmail(e.target.value)}
+                                onChange={handleChange}
                             />
                             </div>
                             <div className="form-group">
@@ -70,8 +68,7 @@ const LoginPage = ()=>{
                                 name="password"
                                 className="form-control"
                                 placeholder="Enter Password"
-                                value={password}
-                                onChange={e=>setPassword(e.target.value)}
+                                onChange={handleChange}
                             />
                             </div>
                             <button type="submit" className="btn btn-primary btn-block" onClick={handleSubmit}>Login</button>

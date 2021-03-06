@@ -1,49 +1,37 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState} from 'react'
 import {useHistory} from 'react-router-dom'
+import {useDispatch,useSelector} from 'react-redux'
+import {signUp} from '../../actions/auth'
+
+const initialState = {
+    name:'',email:'',password:'',confirmPassword:''
+}
 const RegisterPage = ()=>{
-    const [name,setName] = useState('')
-    const [email,setEmail] = useState('')
-    const [password1,setPassword1] = useState('')
-    const [password2,setPassword2] = useState('')
+    const [formData,setFormData] = useState(initialState)
+    const authData = useSelector(state=>state.authData)
     const [err,setErr] = useState('')
+    const dispatch = useDispatch()
     const history = useHistory()
     
-    useEffect(() => {
-        const token = localStorage.getItem('token')
-        if(token!=='null'){
-            history.push('/dashboard')
-        }
-    },[history])
+   
+
+    // useEffect(() => {
+    //     const token = localStorage.getItem('token')
+    //     if(token!=='null'){
+    //         history.push('/dashboard')
+    //     }
+    // },[history])
 
 
-    const submitForm = async(e)=>{
+    const handleSubmit = (e)=>{
         e.preventDefault()
-        if(password1!==password2){
-            setErr("Password do not match")
-            return 
-        }
-        try{
-            await fetch('/api/v1/users/register',{
-                method:"POST",
-                headers:{
-                    "Content-Type":"application/json"
-                },
-                body:JSON.stringify({name,email,password:password1})
-            }).then(response=>response.json())
-            .then(res=>{
-                console.log(res.msg)
-                setErr(res.msg)
-                setName('')
-                setEmail('')
-                setPassword1('')
-                setPassword2('')
-                if(res.user != null){
-                    history.push('/login')
-                }
-            })
-        }catch(err){
-            console.log(err)
-        }
+        dispatch(signUp(formData,history))
+        console.log(authData)
+        setErr(authData?.msg)
+    }
+
+    const handleChange = (e)=>{
+        setFormData({...formData,[e.target.name]:e.target.value})
     }
     
 
@@ -58,8 +46,8 @@ const RegisterPage = ()=>{
                 {
                     err?(
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                            <strong>Note:</strong> {err}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <strong>Note:</strong> {authData?.msg}
+                            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -73,9 +61,8 @@ const RegisterPage = ()=>{
                     id="name"
                     name="name"
                     className="form-control"
-                    placeholder="Enter Name"
-                    onChange={(e)=>setName(e.target.value)}
-                    value={name}
+                    placeholder="Enter Name" 
+                    onChange={handleChange}
                     />
                 </div>
                 <div className="form-group">
@@ -86,8 +73,7 @@ const RegisterPage = ()=>{
                     name="email"
                     className="form-control"
                     placeholder="Enter Email"
-                    onChange={(e)=>setEmail(e.target.value)}
-                    value={email}
+                    onChange={handleChange}
                     />
                 </div>
                 <div className="form-group">
@@ -98,30 +84,60 @@ const RegisterPage = ()=>{
                     name="password"
                     className="form-control"
                     placeholder="Create Password"
-                    onChange={(e)=>setPassword1(e.target.value)}
-                    password={password1}
+                    onChange={handleChange}
                     />
                 </div>
                 <div className="form-group">
                     <label htmlFor="password2">Confirm Password</label>
                     <input
                     type="password"
-                    id="password2"
-                    name="password2"
+                    id="confirmPassword"
+                    name="confirmPassword"
                     className="form-control"
                     placeholder="Confirm Password"
-                    onChange={(e)=>setPassword2(e.target.value)}
-                    password={password2}
+                    onChange={handleChange}
                     />
                 </div>
-                <button type="submit" className="btn btn-primary btn-block" onClick={submitForm}>
+                <button type="submit" className="btn btn-primary btn-block" onClick={handleSubmit}>
                     Register
                 </button>
                 </form>
-                <p class="lead mt-4">Have An Account? <a href="/login">Login</a></p>
+                <p className="lead mt-4">Have An Account? <a href="/login">Login</a></p>
             </div>
             </div>
         </div>
     )
 }
 export default RegisterPage
+
+
+
+// const handleSubmit = async(e)=>{
+//     e.preventDefault()
+//     if(password1!==confirmPassword){
+//         setErr("Password do not match")
+//         return 
+//     }
+//     try{
+//         await fetch('/api/v1/users/register',{
+//             method:"POST",
+//             headers:{
+//                 "Content-Type":"application/json"
+//             },
+//             body:JSON.stringify({name,email,password:password1})
+//         }).then(response=>response.json())
+//         .then(res=>{
+//             console.log(res.msg)
+//             setErr(res.msg)
+//             setName('')
+//             setEmail('')
+//             setPassword1('')
+//             setPassword2('')
+//             if(res.user != null){
+//                 history.push('/login')
+//             }
+//         })
+//     }catch(err){
+//         console.log(err)
+//     }
+// }

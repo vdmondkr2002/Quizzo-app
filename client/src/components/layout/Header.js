@@ -1,19 +1,19 @@
-import React,{useState,useEffect} from 'react'
-import {useHistory} from 'react-router-dom'
+import React,{useState} from 'react'
+import {useHistory,Link} from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import { LOGOUT } from '../../constants/actions'
+
 const Header =()=> {
     const [isloggedin,setisLoggedIn] = useState(false)
-
+    const dispatch = useDispatch()
     const history = useHistory()
 
-    useEffect(()=>{
-      const token= localStorage.getItem('token')
-      if(token !== 'null'){
-        setisLoggedIn(true)
-      }
-    },[isloggedin])
+   
+    const user = localStorage.getItem('profile')
+      
 
     const logout = ()=>{
-      localStorage.setItem('token',null)
+      dispatch({type:LOGOUT})
       setisLoggedIn(false)
       history.push('/login')
     }
@@ -29,18 +29,26 @@ const Header =()=> {
         <div className="collapse navbar-collapse" id="navbarColor01">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
-                <a className="nav-link" href="/"><i className='fas fa-dice-d20'></i>
-                </a>
+                <Link to='/'>
+                  <button className="btn btn-success"><i className='fas fa-dice-d20'></i></button>
+                </Link>
+              </li>
+              <li className="nav-item" style={{marginRight:"5%"}}>
+                <Link to="/" >
+                  <button className="btn btn-success">Home</button>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/">Home</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/about">About</a>
+                <Link to="/about">
+                  <button className="btn btn-success">About</button>
+                </Link>
               </li>
             </ul>
+            <Link to="/profile" style={{marginRight:"5%"}} >
+              <button className="btn btn-success">Profile</button>
+            </Link>
             {
-              isloggedin?(
+              user?(
                 <button onClick={logout} className="btn btn-secondary">Logout</button>
               ):null
             }

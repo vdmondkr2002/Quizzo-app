@@ -4,10 +4,9 @@ const LandingPage = ()=>{
     const history = useHistory()
 
     useEffect(() => {
-        const token = localStorage.getItem('token')
-        if(token!=='null'){
+        const profile=JSON.parse(localStorage.getItem('profile'))
+        if(profile)
             history.push('/dashboard')
-        }
     },[history])
 
     return (

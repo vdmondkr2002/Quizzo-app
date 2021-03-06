@@ -7,8 +7,10 @@ import Dashboard from './components/MainPageComponents/Dashboard'
 import RegisterPage from './components/LandingPageCompoenents/RegisterPage'
 import LoginPage from './components/LandingPageCompoenents/LoginPage'
 import LandingPage from './components/LandingPageCompoenents/LandingPage'
+import Profile from './components/ProfilePageComponents/ProfilePage'
 import TakeQuiz from './components/TakeQuizComponents/Home'
 import CreateQuestion from './components/CreateQuestionComponents/Form'
+
 
 const App = ()=> {
   return (
@@ -20,6 +22,7 @@ const App = ()=> {
             <Route exact path="/register" component={RegisterPage}/>
             <Route exact path="/login" component={LoginPage}/>
             <Route exact path="/dashboard" component={Dashboard}/> 
+            <Route exact path="/profile" component={Profile}/> 
             <Route exact path="/takequiz" component={TakeQuiz}/> 
             <Route exact path="/createquestion" component={CreateQuestion}/>
             <Route exact path="/about" component={about}/>

@@ -12,5 +12,12 @@ const ChoiceSchema = mongoose.Schema({
     questionId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Question'
+    },
+    createdAt:{
+        type:Date,
+        default:Date.now()
     }
 })
+
+const Choice = mongoose.model('Choice',ChoiceSchema)
+module.exports = Choice

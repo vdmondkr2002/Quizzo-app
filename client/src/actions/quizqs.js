@@ -30,3 +30,11 @@ export const getClear = ()=>async(dispatch)=>{
         console.log(err)
     }
 }
+
+export const addResultToDB = (scorePercent)=>async(dispatch)=>{
+    try {
+        await api.addResult(scorePercent)
+    } catch (err) {
+        console.log(err)
+    }
+}

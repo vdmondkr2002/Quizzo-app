@@ -1,17 +1,15 @@
 import React,{useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux'
+import { REMOVE } from '../../constants/actions';
 import Buttons from './Buttons'
-import { useHistory } from 'react-router';
 const Dashboard = ()=>{
-    const history = useHistory()
+    const questionData = useSelector(state=>state.questionData)
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        const token = localStorage.getItem('token')
-        if(token==='null'){
-            console.log("Hello")
-            history.push('/')
-        }
-    },[history])
-
+        if(questionData?.msg)
+            alert(questionData.msg)
+    }, [questionData.msg,dispatch])
     
     return (
         <div className="container mt-5">
