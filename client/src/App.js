@@ -9,6 +9,7 @@ import LoginPage from './components/LandingPageCompoenents/LoginPage'
 import LandingPage from './components/LandingPageCompoenents/LandingPage'
 import Profile from './components/ProfilePageComponents/ProfilePage'
 import TakeQuiz from './components/TakeQuizComponents/Home'
+import TakeCustomQuiz from './components/TakeCustomQuizComponents/Home'
 import CreateQuestion from './components/CreateQuestionComponents/Form'
 
 
@@ -23,6 +24,7 @@ const App = ()=> {
             <Route exact path="/login" component={LoginPage}/>
             <Route exact path="/dashboard" component={Dashboard}/> 
             <Route exact path="/profile" component={Profile}/> 
+            <Route exact path="/takequiz/:cat" component={TakeCustomQuiz}/>
             <Route exact path="/takequiz" component={TakeQuiz}/> 
             <Route exact path="/createquestion" component={CreateQuestion}/>
             <Route exact path="/about" component={about}/>

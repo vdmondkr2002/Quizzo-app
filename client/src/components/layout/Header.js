@@ -1,20 +1,30 @@
-import React,{useState} from 'react'
-import {useHistory,Link} from 'react-router-dom'
+import React,{useEffect, useState} from 'react'
+import {useHistory,Link, useLocation} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import { LOGOUT } from '../../constants/actions'
 
 const Header =()=> {
-    const [isloggedin,setisLoggedIn] = useState(false)
     const dispatch = useDispatch()
     const history = useHistory()
+    const location = useLocation()
+  
+    const [user,setUser] = useState(JSON.parse(localStorage.getItem('profile')))
 
-   
-    const user = localStorage.getItem('profile')
+
+    useEffect(()=>{
+      setUser(JSON.parse(localStorage.getItem('profile')))
+      const token = user?.token
+    },[location,user?.token])
       
+    useEffect(()=>{
+      if(!user){
+        history.push('/')
+      }
+    },[user])
 
     const logout = ()=>{
       dispatch({type:LOGOUT})
-      setisLoggedIn(false)
+      setUser(null)
       history.push('/login')
     }
 
@@ -28,11 +38,6 @@ const Header =()=> {
       
         <div className="collapse navbar-collapse" id="navbarColor01">
             <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
-                <Link to='/'>
-                  <button className="btn btn-success"><i className='fas fa-dice-d20'></i></button>
-                </Link>
-              </li>
               <li className="nav-item" style={{marginRight:"5%"}}>
                 <Link to="/" >
                   <button className="btn btn-success">Home</button>
@@ -44,12 +49,15 @@ const Header =()=> {
                 </Link>
               </li>
             </ul>
-            <Link to="/profile" style={{marginRight:"5%"}} >
-              <button className="btn btn-success">Profile</button>
-            </Link>
+            
             {
               user?(
+                <>
+                <Link to="/profile" style={{marginRight:"5%"}} >
+                  <button className="btn btn-success">Profile</button>
+                </Link>
                 <button onClick={logout} className="btn btn-secondary">Logout</button>
+                </>
               ):null
             }
         </div>

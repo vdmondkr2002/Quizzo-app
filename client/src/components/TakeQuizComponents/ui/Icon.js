@@ -23,7 +23,6 @@ const Icon = ({response}) => {
         console.log(response)
 
         return (
-            <div className="col-sm-1">
                 <svg className="checkmark"
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
@@ -41,12 +40,10 @@ const Icon = ({response}) => {
                         strokeWidth="2.5"
                         strokeLinecap="round"/>
             </svg>
-            </div>
             
         )
     }else if(response === false){
         return (
-            <div className="col-sm-1">
                 <svg className="checkmark"
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="32"
@@ -64,7 +61,6 @@ const Icon = ({response}) => {
                                         strokeWidth="2.5"
                                         strokeLinecap="round"/>
                             </svg>   
-            </div>
         )
     }
     else return(

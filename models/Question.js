@@ -13,6 +13,7 @@ const QuestionSchema = mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'Category'
     },
+    choices:[Object],
     createdAt:{
         type:Date,
         default:Date.now()

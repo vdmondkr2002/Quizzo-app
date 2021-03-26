@@ -9,6 +9,7 @@ exports.postQuestion = async(req,res)=>{
     try{
         const {category,question,choices} = req.body;
         // console.log(category,question,choices)
+        
         if(!req.userId)
             return res.status(403).json({msg:"Unauthorized"})
         
@@ -25,31 +26,46 @@ exports.postQuestion = async(req,res)=>{
             const newCategory = new Category({category:category,createdAt:new Date().toISOString()})
             newCategory.save()
             console.log("New category created")
-            const newQuestion = new Question({author:req.userId,question:question,catId:newCategory._id,createdAt:new Date().toISOString()})
+            const newQuestion = new Question({author:req.userId,question:question,choices:choices,catId:newCategory._id,createdAt:new Date().toISOString()})
             newQuestion.save()
-            choices.forEach(({choice,isCorrect}) => {
-                const newChoice = new Choice({choice,is_correct:isCorrect,questionId:newQuestion._id,createdAt:new Date().toISOString()})
-                newChoice.save()
-                console.log(newChoice)
-            });
             return res.status(200).json({msg:`Thank you ${user.name} for contributing!!`})
-
         }else{
-            const newQuestion = new Question({author:req.userId,question:question,catId:existingCategory._id,createdAt:new Date().toISOString()})
+            const newQuestion = new Question({author:req.userId,question:question,choices:choices,catId:existingCategory._id,createdAt:new Date().toISOString()})
             newQuestion.save()
-            choices.forEach(({choice,isCorrect}) => {
-                const newChoice = new Choice({choice,is_correct:isCorrect,questionId:newQuestion._id,createdAt:new Date().toISOString()})
-                newChoice.save()
-                console.log(newChoice)
-            });
             return res.status(200).json({msg:`Thank you ${user.name} for contributing!!`})
         }
-
-
-        
     }catch{
         return res.status(500).json({msg:"Something went wrong"})
     }
     
 }
 
+exports.getQuizqs = async(req,res)=>{
+    try {
+        const {noOfqs,category} = req.query
+        console.log(noOfqs,category);
+        const cat = await Category.findOne({category:category})
+        const quizqs = await Question.aggregate([
+            {
+                $match:{
+                    catId:cat._id
+                }
+            },
+            {
+                $sample:{
+                    size:Number(noOfqs)
+                }
+            }
+        ])
+        console.log(quizqs);
+        return res.status(200).json(quizqs)
+    } catch (err) {
+        return res.status(500).json({msg:"Something went wrong"})
+    }
+}
+
+// {
+//     $match:{
+//         catId:cat._id
+//     }
+// },

@@ -13,7 +13,7 @@ const Quizqs = ({setScore,score,question,answer,id}) => {
     const prevResponse = responses.find(response=>response.id===id)
 
     // console.log(prevResponse)
-
+    console.log(" I am causing trouble")
     const check=(e)=>{
         const button = e.target
         button.innerText = 'Checked'

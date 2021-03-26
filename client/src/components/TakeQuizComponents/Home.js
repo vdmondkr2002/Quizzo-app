@@ -22,13 +22,6 @@ const Home = () => {
                 <div className="cont">
                     <Input/>
                     <QList/>
-                    {
-                        quizqs.length!==0?(
-                        <Link to="/score"  >
-                            <button onClick={handleScore} class="btn btn-primary">Get Score</button>
-                        </Link>
-                        ):null
-                    }
                 </div>
         </div>
     )

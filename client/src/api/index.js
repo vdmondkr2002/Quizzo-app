@@ -24,5 +24,10 @@ export const getUserData = ()=>API.get(`${urlUser}/userData`)
 
 const urlQuestion = '/api/v1/questions'
 
+export const getQuizqs = (noOfqs,category)=>API.get(`${urlQuestion}?noOfqs=${noOfqs}&category=${category}`);
+
 export const postQuestion = (formData)=>API.post(`${urlQuestion}/add`,formData);
 
+const urlCats = '/api/v1/categories'
+
+export const getCategories = ()=>API.get(`${urlCats}`)

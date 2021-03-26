@@ -9,7 +9,7 @@ const authReducer = (authData={},action)=>{
             return action.payload
         case LOGOUT:
             localStorage.clear()
-            return {}
+            return null
         default:
             return null
     }

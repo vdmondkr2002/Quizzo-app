@@ -1,10 +1,10 @@
 import React,{useState} from 'react';
 import Pagination from 'react-js-pagination'
-import Quizq from './Quizq'
+import Question from './Question'
 import {Link} from "react-router-dom"
 import {useDispatch, useSelector} from 'react-redux'
 import {addResultToDB} from '../../actions/quizqs'
-import Clock from './Clock'
+
 const QList = ()=>{
     
     const quizObj = useSelector(state=>state.quizqs)
@@ -13,15 +13,14 @@ const QList = ()=>{
     const quizqs = quizObj.data===undefined?[]:quizObj.data;
 
     //score initialized to 0
-    const [score,setScore] = useState(0)
-
+    const [score,setScore] = useState(0)  
     /*For Pagination */
     //current page
     const [currentPage,setcurrentPage] = useState(1)
     //records per page
     const recordPerPage = 1
     //total number of records 
-    const totalRecords = 10
+    const totalRecords = quizqs.length
     //rage of pages in paginator 
     const pageRange = 1
     const handlePageChange = (pageNumber)=>{
@@ -34,13 +33,12 @@ const QList = ()=>{
         dispatch(addResultToDB({scorePercent:result}))
     }
 
+    // choices.map((choice)=>choice.choice)
 
     return (
         <div>
-        
         {quizqs.length!==0?(<div className="quiz">
-            <Clock/>
-            <Quizq key={quizqs[currentPage-1].id} question={quizqs[currentPage-1].question} answer={quizqs[currentPage-1].answer} id={quizqs[currentPage-1].id} score={score} setScore={setScore} />
+            <Question key={quizqs[currentPage-1]._id} question={quizqs[currentPage-1].question} choices={quizqs[currentPage-1].choices.map((choice)=>choice.choice)} correct_choice={quizqs[currentPage-1].choices[quizqs[currentPage-1].choices.findIndex(choice=>choice.isCorrect===true)].choice} id={quizqs[currentPage-1]._id} score={score} setScore={setScore} />
             <h1>{currentPage}</h1>
         </div>
         ):null}
@@ -60,7 +58,7 @@ const QList = ()=>{
         {
             quizqs.length!==0?(
             <Link to="/score"  >
-                <button onClick={handleScore} class="btn btn-primary">Get Score</button>
+                <button onClick={handleScore} className="btn btn-primary">Get Score</button>
             </Link>
             ):null
         }

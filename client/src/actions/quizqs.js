@@ -38,3 +38,17 @@ export const addResultToDB = (scorePercent)=>async(dispatch)=>{
         console.log(err)
     }
 }
+
+export const getCatquizqs = (noOfqs,category)=>async(dispatch)=>{
+    try{
+        console.log(noOfqs);
+        const score=0;
+        const {data}= await api.getQuizqs(noOfqs,category)
+        console.log(data)
+        const quizqs = {data,score:score}
+        console.log(quizqs)
+        dispatch({type:FETCH_ALL,payload:quizqs})
+    }catch(err){
+        console.log(err)
+    }
+}

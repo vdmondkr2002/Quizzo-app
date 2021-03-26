@@ -26,6 +26,7 @@ app.use(cors())
 //routes
 app.use('/api/v1/users/',require('./routes/users'))
 app.use('/api/v1/questions/',require('./routes/questions'))
+app.use('/api/v1/categories/',require('./routes/categories'))
 
 
 app.listen(PORT,()=>console.log(`Server running in ${process.env.NODE_ENV} mode on port ${process.env.PORT}`))

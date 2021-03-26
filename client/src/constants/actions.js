@@ -17,3 +17,5 @@ export const REMOVE = 'REMOVE'
 
 //user data
 export const GET = 'GET'
+
+export const GET_CATS = 'GET_CATS'
