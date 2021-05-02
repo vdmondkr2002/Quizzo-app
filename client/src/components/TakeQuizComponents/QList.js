@@ -5,13 +5,14 @@ import {Link} from "react-router-dom"
 import {useDispatch, useSelector} from 'react-redux'
 import {addResultToDB} from '../../actions/quizqs'
 import Clock from './Clock'
+import { CLEAR } from '../../constants/actions';
 const QList = ()=>{
-    
+    const [done,setDone] = useState(false)
     const quizObj = useSelector(state=>state.quizqs)
     const dispatch = useDispatch()
     //get questions of quiz
     const quizqs = quizObj.data===undefined?[]:quizObj.data;
-
+    console.log(done)
     //score initialized to 0
     const [score,setScore] = useState(0)
 
@@ -21,7 +22,7 @@ const QList = ()=>{
     //records per page
     const recordPerPage = 1
     //total number of records 
-    const totalRecords = 10
+    const totalRecords = quizqs.length
     //rage of pages in paginator 
     const pageRange = 1
     const handlePageChange = (pageNumber)=>{
@@ -32,6 +33,8 @@ const QList = ()=>{
         const result = quizObj?.score*1.0/quizqs?.length
         console.log(result)
         dispatch(addResultToDB({scorePercent:result}))
+        setDone(true)
+        console.log(done)
     }
 
 
@@ -39,7 +42,7 @@ const QList = ()=>{
         <div>
         
         {quizqs.length!==0?(<div className="quiz">
-            <Clock/>
+            <Clock done={done}/>
             <Quizq key={quizqs[currentPage-1].id} question={quizqs[currentPage-1].question} answer={quizqs[currentPage-1].answer} id={quizqs[currentPage-1].id} score={score} setScore={setScore} />
             <h1>{currentPage}</h1>
         </div>
@@ -60,7 +63,7 @@ const QList = ()=>{
         {
             quizqs.length!==0?(
             <Link to="/score"  >
-                <button onClick={handleScore} class="btn btn-primary">Get Score</button>
+                <button onClick={handleScore} className="btn btn-primary">Get Score</button>
             </Link>
             ):null
         }
@@ -68,4 +71,5 @@ const QList = ()=>{
         </div>
     )
 }
+
 export default QList;

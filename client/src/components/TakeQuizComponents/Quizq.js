@@ -23,12 +23,11 @@ const Quizqs = ({setScore,score,question,answer,id}) => {
             if(prevResponse===undefined){
                 setScore(score+1)
                 dispatch(updateScore(score+1))
-                dispatch(doneQuestion(id,ans,true))
+                dispatch(doneQuestion(id,question,answer,ans,true))
             }
- 
         }else{
             if(prevResponse===undefined){
-                dispatch(doneQuestion(id,ans,false))
+                dispatch(doneQuestion(id,question,answer,ans,false))
             }
         }
     }
@@ -45,7 +44,7 @@ const Quizqs = ({setScore,score,question,answer,id}) => {
                 }
                 {
                     prevResponse===undefined?(
-                        <button onClick={check} id="check" className="btn btn-primary col-sm-2" >Check</button>
+                        <button onClick={check} id="check" className="btn btn-primary col-sm-2" >Submit</button>
                     ):(
                         prevResponse.iscorrect?(
                             <button className="btn btn-success col-sm-2">Checked</button>

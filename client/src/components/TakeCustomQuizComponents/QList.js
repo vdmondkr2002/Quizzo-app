@@ -1,11 +1,12 @@
 import React,{useState} from 'react';
 import Pagination from 'react-js-pagination'
 import Question from './Question'
+import Clock from '../TakeCustomQuizComponents/Clock'
 import {Link} from "react-router-dom"
 import {useDispatch, useSelector} from 'react-redux'
 import {addResultToDB} from '../../actions/quizqs'
 
-const QList = ()=>{
+const QList = ({category})=>{
     
     const quizObj = useSelector(state=>state.quizqs)
     const dispatch = useDispatch()
@@ -38,6 +39,7 @@ const QList = ()=>{
     return (
         <div>
         {quizqs.length!==0?(<div className="quiz">
+            <Clock category={category}/>
             <Question key={quizqs[currentPage-1]._id} question={quizqs[currentPage-1].question} choices={quizqs[currentPage-1].choices.map((choice)=>choice.choice)} correct_choice={quizqs[currentPage-1].choices[quizqs[currentPage-1].choices.findIndex(choice=>choice.isCorrect===true)].choice} id={quizqs[currentPage-1]._id} score={score} setScore={setScore} />
             <h1>{currentPage}</h1>
         </div>

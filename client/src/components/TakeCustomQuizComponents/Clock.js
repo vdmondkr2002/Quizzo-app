@@ -1,6 +1,7 @@
+import { compareSync } from 'bcryptjs';
 import React, { useEffect } from 'react'
 import {CLEAR, DONE} from '../../constants/actions'
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 
 const styles = {
@@ -43,14 +44,9 @@ const styles = {
 }
 
 
-const Clock = ({done}) => {
+const Clock = ({category}) => {
     const dispatch =useDispatch()
     const history = useHistory();
-    console.log(done)
-    // const quizObj = useSelector(state=>state.quizqs)
-    // const quizqs = quizObj.data===undefined?[]:quizObj.data;
-   
-    // console.log(quizqs.length===0)
     useEffect(()=>{
         const deadline = new Date(Date.parse(new Date()) + 60 * 1000);
         initializeClock("clockdiv",deadline);
@@ -73,15 +69,10 @@ const Clock = ({done}) => {
             minuetsSpan.innerHTML = ('0'+t.minutes).slice(-2);
             secondsSpan.innerHTML = ('0'+t.seconds).slice(-2);
             if(t.total<=0){
-                console.log(window.location.href.includes("/score"))
-                if(window.location.href.includes("/score")){
-                    clearInterval(timeinterval);
-                }else{
-                    dispatch({type:DONE,payload:{msg:"You have run out of time, Try again!!"}})
-                    history.push('/takequiz');
-                    dispatch({type:CLEAR})
-                    clearInterval(timeinterval)
-                }             
+                dispatch({type:DONE,payload:{msg:"You have run out of time, Try again!!"}})
+                history.push(`/takequiz/${category}`);
+                dispatch({type:CLEAR})
+                clearInterval(timeinterval);
             }
         }
         updateClock();

@@ -6,6 +6,7 @@ import { clearReponses } from '../../actions/responses'
 const Score = () => { 
     const dispatch = useDispatch()
     const quizObj = useSelector(state=>state.quizqs)
+    const responses = useSelector(state=>state.responses)
     const quizqs = quizObj.data===undefined?[]:quizObj.data;
     const score = quizObj?.score;
     let history = useHistory()
@@ -27,6 +28,16 @@ const Score = () => {
                             <p><b>{score}/{quizqs.length}</b></p>
                             <button className="btn btn-primary" onClick={goHome}>Take Another</button>
                         </div>
+                        <h2>Your Responses</h2>
+                        {
+                            responses.map((response)=>(
+                                <>
+                                <div>{response.question}</div>
+                                Correct answer:<div>{response.answer}</div>
+                                Your answer:<div>{response.ans}</div>
+                                </>
+                            ))
+                        }
                     </div>
                 </div>
             </div>

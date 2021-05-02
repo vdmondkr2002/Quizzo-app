@@ -1,20 +1,18 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import {Input} from './Input'
 import QList from './QList'
-import {Link} from "react-router-dom"
 import {useDispatch, useSelector} from 'react-redux'
-import {addResultToDB} from '../../actions/quizqs'
+
+
 const Home = () => {
     const quizObj = useSelector(state=>state.quizqs)
     const dispatch = useDispatch()
-    //get questions of quiz
-    const quizqs = quizObj.data===undefined?[]:quizObj.data;
+    const questionData = useSelector(state=>state.questionData)
 
-    const handleScore = (e)=>{
-        const result = quizObj?.score*1.0/quizqs?.length
-        console.log(result)
-        dispatch(addResultToDB({scorePercent:result}))
-    }
+    useEffect(() => {
+        if(questionData?.msg)
+            alert(questionData.msg)
+    }, [questionData.msg,dispatch])
 
     return (
         <div className="container">
