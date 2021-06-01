@@ -38,27 +38,13 @@ const Quizqs = ({setScore,score,question,answer,id}) => {
             <div className="row">
                 <textarea className="form-control col-sm-9" rows="1" defaultValue={prevResponse?.ans}></textarea>
                 {
-                    prevResponse!==undefined?(
-                        <Icon response={prevResponse.iscorrect}/>
-                    ):null
-                }
-                {
                     prevResponse===undefined?(
                         <button onClick={check} id="check" className="btn btn-primary col-sm-2" >Submit</button>
                     ):(
-                        prevResponse.iscorrect?(
-                            <button className="btn btn-success col-sm-2">Checked</button>
-                        ):(
-                            <button className="btn btn-primary col-sm-2">Checked</button>
-                        )
+                        <button className="btn btn-success col-sm-2">Submitted</button>
                     )
                 }
             </div>
-            {
-                    prevResponse!==undefined?(
-                        <Alert response={prevResponse.iscorrect} answer={answer}/>
-                    ):null
-            }
         </div>
     )
 }

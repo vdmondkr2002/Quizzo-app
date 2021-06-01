@@ -47,12 +47,11 @@ const Clock = ({done}) => {
     const dispatch =useDispatch()
     const history = useHistory();
     console.log(done)
-    // const quizObj = useSelector(state=>state.quizqs)
-    // const quizqs = quizObj.data===undefined?[]:quizObj.data;
+    const quizObj = useSelector(state=>state.quizqs)
+    const quizqs = quizObj.data===undefined?[]:quizObj.data;
    
-    // console.log(quizqs.length===0)
     useEffect(()=>{
-        const deadline = new Date(Date.parse(new Date()) + 60 * 1000);
+        const deadline = new Date(Date.parse(new Date()) + quizqs.length*30 * 1000);
         initializeClock("clockdiv",deadline);
     },[])
     const getTimeRemaining = (endtime)=>{
@@ -72,9 +71,9 @@ const Clock = ({done}) => {
             var t=getTimeRemaining(endtime);
             minuetsSpan.innerHTML = ('0'+t.minutes).slice(-2);
             secondsSpan.innerHTML = ('0'+t.seconds).slice(-2);
-            if(t.total<=0){
-                console.log(window.location.href.includes("/score"))
-                if(window.location.href.includes("/score")){
+            if((t.total<=0)||(quizqs.length===0)){
+                // console.log(window.location.href.includes("/score"))
+                if(quizqs.length===0){
                     clearInterval(timeinterval);
                 }else{
                     dispatch({type:DONE,payload:{msg:"You have run out of time, Try again!!"}})

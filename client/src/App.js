@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router,Route,Switch} from "react-router-dom"
 import Score from './components/ScorePageComponents/Score'
-import Header from './components/layout/Header.js'
+import Navbar from './components/Navbar/Navbar.js'
 import about from './components/AboutPageComponents/about.js'
 import Dashboard from './components/MainPageComponents/Dashboard'
 import RegisterPage from './components/LandingPageCompoenents/RegisterPage'
@@ -17,7 +17,7 @@ const App = ()=> {
   return (
       <div className="App">      
         <Router>
-        <Header/>
+        <Navbar/>
           <Switch>    
             <Route exact path="/" component={LandingPage}/>
             <Route exact path="/register" component={RegisterPage}/>

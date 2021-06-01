@@ -19,3 +19,9 @@ export const REMOVE = 'REMOVE'
 export const GET = 'GET'
 
 export const GET_CATS = 'GET_CATS'
+
+export const ADDTOPPERS = 'ADDTOPPERS'
+
+export const ADDCONTRI = 'ADDCONTRI'
+
+export const ADDPIC = 'ADDPIC'

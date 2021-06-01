@@ -30,9 +30,9 @@ const QList = ()=>{
     }
 
     const handleScore = (e)=>{
-        const result = quizObj?.score*1.0/quizqs?.length
+        const result = quizObj?.score
         console.log(result)
-        dispatch(addResultToDB({scorePercent:result}))
+        dispatch(addResultToDB({score:result}))
         setDone(true)
         console.log(done)
     }

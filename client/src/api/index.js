@@ -18,15 +18,21 @@ export const signUp = (formData)=>API.post(`${urlUser}/signUp`,formData)
 
 export const signIn = (formData)=>API.post(`${urlUser}/signIn`,formData)
 
-export const addResult = (scorePercent)=>API.post(`${urlUser}/addResult`,scorePercent)
+export const addResult = (score)=>API.post(`${urlUser}/addResult`,score)
 
 export const getUserData = ()=>API.get(`${urlUser}/userData`)
+
+export const getToppers = ()=>API.get(`${urlUser}/topscorers`)
+
+export const setProfilePic = (imageFile)=>API.post(`${urlUser}/profileImage`,imageFile)
 
 const urlQuestion = '/api/v1/questions'
 
 export const getQuizqs = (noOfqs,category)=>API.get(`${urlQuestion}?noOfqs=${noOfqs}&category=${category}`);
 
 export const postQuestion = (formData)=>API.post(`${urlQuestion}/add`,formData);
+
+
 
 const urlCats = '/api/v1/categories'
 
