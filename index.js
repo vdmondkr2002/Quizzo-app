@@ -11,6 +11,9 @@ const app = express()
 //connect to database
 connectDB()
 
+app.get('/',(req,res)=>{
+  res.send('Quizzo API running')
+})
 app.use((req, res, next) => {
     res.append("Access-Control-Allow-Origin", "http://localhost:3000");
     res.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH");
@@ -35,4 +38,4 @@ app.use('/api/v1/questions/',require('./routes/questions'))
 app.use('/api/v1/report/',require('./routes/quizReport'))
 
 
-app.listen(PORT,()=>console.log(`Server running in ${process.env.NODE_ENV} mode on port ${process.env.PORT}`))
+app.listen(PORT,()=>console.log(`Server running on port ${process.env.PORT}`))
