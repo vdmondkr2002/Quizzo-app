@@ -68,7 +68,7 @@ exports.signUp = async(req,res)=>{
         <div>To complete your Sign Up and To access your account, Please verify your email address:</div>
         <a href="#">${email}</a>
         <div>
-        <a href="http://localhost:3000/verifyMail/${confirmationCode}" style="background-color:red;color:white;padding:10px;text-decoration:none;font-weight:bold;margin-top:"30px"> Verify Email Address </a>
+        <a href="https://serene-clarke-e61d2d.netlify.app/verifyMail/${confirmationCode}" style="background-color:red;color:white;padding:10px;text-decoration:none;font-weight:bold;margin-top:"30px"> Verify Email Address </a>
         </div>
         `
         const receiverMail = email
@@ -138,7 +138,7 @@ exports.sendResetEmail = async(req,res)=>{
         const html = `
         <h3>To reset Your password follow the link below:</h3>
         <div>
-        <a href="http://localhost:3000/resetPassword/${resetCode}">Reset Your password</a>
+        <a href="https://serene-clarke-e61d2d.netlify.app/resetPassword/${resetCode}">Reset Your password</a>
         </div>
         <div>If you haven't made this request. simply ignore the mail and no changes will be made</div>
         `

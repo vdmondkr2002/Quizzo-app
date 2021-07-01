@@ -1,9 +1,6 @@
 const axios = require('axios')
-const urlQuiz = 'https://opentdb.com/api.php';
 
-export const fetchQs = (noOfqs)=>axios.get(urlQuiz+`?amount=${noOfqs}&type=multiple`)
-
-const API = axios.create({ baseURL: 'http://localhost:5000/' });
+const API = axios.create({ baseURL: 'https://quizzo-web-v1.herokuapp.com/' });
 
 API.interceptors.request.use((req) => {
     if (localStorage.getItem('quizToken')) {
