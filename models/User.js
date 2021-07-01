@@ -1,30 +1,59 @@
 const mongoose = require('mongoose')
 
 const UserSchema = mongoose.Schema({
-    name:{
+    firstName:{
         type:String,
         required:true,
-        min:6
+        min:2
+    },
+    lastName:{
+        type:String,
+        required:true,
+        min:2
+    },
+    userName:{
+        type:String,
+        required:true,
+        min:5
     },
     profilePic:String,
     email:{
         type:String,
         required:true,
     },
+    bio:{
+        type:String
+    },
     password:{
         type:String,
         required:true,
         min:6
     },
+    verified:{
+        type:Boolean,
+        default:false
+    },
     quizesTaken:{
         type:Number,
         required:true
     },
-    scorePercent:{
+    totalScore:{
+        type:Number,
+        required:true
+    },
+    questionsAttempted:{
+        type:Number,
+        required:true
+    },
+    correctSolved:{
         type:Number,
         required:true
     },
     questionsContributed:{
+        type:Number,
+        required:true
+    },
+    timeSpent:{
         type:Number,
         required:true
     },

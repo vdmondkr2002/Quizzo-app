@@ -4,22 +4,29 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "*",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "animejs": "^3.2.1",
     "axios": "^0.21.1",
+    "clsx": "^1.1.1",
     "compress.js": "^1.1.2",
-    "jquery": "^3.5.1",
+    "jwt-decode": "^3.1.2",
+    "moment": "^2.29.1",
     "react": "^17.0.1",
+    "react-chartjs-2": "^3.0.3",
     "react-dom": "^17.0.1",
-    "react-js-pagination": "^3.0.3",
+    "react-material-ui-carousel": "^2.2.6",
+    "react-multi-carousel": "^2.6.3",
     "react-redux": "^7.2.2",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "react-swipeable-views": "^0.14.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "uuid": "^8.3.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -46,5 +53,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:5000/"
 }

@@ -1,6 +1,18 @@
 const mongoose = require('mongoose')
 
 const QuestionSchema = mongoose.Schema({
+    category:{
+        type:String,
+        required:true
+    },
+    correct_answer:{
+        type:String,
+        required:true
+    },
+    incorrect_answers:{
+        type:[String],
+        required:true
+    },
     author:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'User'
@@ -9,11 +21,6 @@ const QuestionSchema = mongoose.Schema({
         type:String,
         required:true
     },
-    catId:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'Category'
-    },
-    choices:[Object],
     createdAt:{
         type:Date,
         default:Date.now()
@@ -22,3 +29,15 @@ const QuestionSchema = mongoose.Schema({
 
 const Question = mongoose.model('Question',QuestionSchema)
 module.exports = Question
+
+
+/*"category": "Animals",
+"type": "multiple",
+"difficulty": "medium",
+"question": "A carnivorous animal eats flesh, what does a nucivorous animal eat?",
+"correct_answer": "Nuts",
+"incorrect_answers": [
+"Nothing",
+"Fruit",
+"Seaweed"
+] */

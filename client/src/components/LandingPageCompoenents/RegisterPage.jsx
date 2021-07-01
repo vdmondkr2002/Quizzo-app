@@ -15,14 +15,6 @@ const RegisterPage = ()=>{
     
    
 
-    // useEffect(() => {
-    //     const token = localStorage.getItem('token')
-    //     if(token!=='null'){
-    //         history.push('/dashboard')
-    //     }
-    // },[history])
-
-
     const handleSubmit = (e)=>{
         e.preventDefault()
         dispatch(signUp(formData,history))
@@ -106,6 +98,7 @@ const RegisterPage = ()=>{
             </div>
             </div>
         </div>
+
     )
 }
 export default RegisterPage

@@ -1,11 +1,12 @@
 import {combineReducers} from 'redux';
 import quizqs from './quizqs';
-import responses from './responses';
 import authData from './auth'
 import questionData from './questions'
 import userData from './user'
-import categories from './categories'
 import toppers from './topscorers'
 import contributors from './topcontributors'
+import alert from './alert'
+import reports from './report'
+import sectionReport from './sectionReport'
 
-export default combineReducers({quizqs,responses,authData,questionData,userData,categories,toppers,contributors});
+export default combineReducers({quizqs,authData,questionData,userData,toppers,contributors,alert,reports,sectionReport});

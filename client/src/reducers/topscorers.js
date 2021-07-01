@@ -5,7 +5,7 @@ const toppersReducer = (toppers=[],action)=>{
         case ADDTOPPERS:
             return action.payload.toppers
         default:
-            console.log(action.type)
+            // console.log(action.type)
             return toppers
     }
 }

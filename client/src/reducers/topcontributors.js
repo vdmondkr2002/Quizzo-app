@@ -5,7 +5,7 @@ const contributorsReducer = (contributors=[],action)=>{
         case ADDCONTRI:
             return action.payload.contributors
         default:
-            console.log(action.type)
+            // console.log(action.type)
             return contributors
     }
 }

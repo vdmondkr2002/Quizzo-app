@@ -1,13 +1,14 @@
-import {REMOVE, DONE} from '../constants/actions'
+import {SET_QS, CLEAR_QS} from '../constants/actions'
 
-const questionReducer = (questionData={},action)=>{
+const questionReducer = (questionData=[],action)=>{
     switch (action.type) {
-        case DONE:
+        case SET_QS:
+            console.log(action.payload)
             return action.payload;
-        case REMOVE:
-            return {}
+        case CLEAR_QS:
+            return []
         default:
-            return {}
+            return questionData
     }
 }
 export default questionReducer
