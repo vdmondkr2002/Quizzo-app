@@ -22,7 +22,7 @@ const sendEmail = async(mailData)=>{
             html:mailData.html
         }
     }else{
-        const mailOptions = {
+        mailOptions = {
             from:process.env.ADMIN1_EMAIL,
             to:receiverMail,
             subject:subject,

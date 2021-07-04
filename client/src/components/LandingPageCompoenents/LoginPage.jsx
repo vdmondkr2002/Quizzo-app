@@ -114,7 +114,9 @@ const LoginPage = ()=>{
             dispatch(signIn({email:formData.email,password:formData.password},history))
         else
             dispatch(signUp(formData,history))
-        // setErr(authData?.msg)
+        
+        setFormData({...formData,userName:'',email:'',confirmPassword:'',password:'',firstName:'',lastName:'',bio:''})
+
     }
 
     

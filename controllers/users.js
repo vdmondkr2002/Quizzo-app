@@ -138,14 +138,14 @@ exports.sendResetEmail = async(req,res)=>{
         const html = `
         <h3>To reset Your password follow the link below:</h3>
         <div>
-        <a href="https://serene-clarke-e61d2d.netlify.app/resetPassword/${resetCode}">Reset Your password</a>
+        <a href="https://quizzo-v1.netlify.app/resetPassword/${resetCode}">Reset Your password</a>
         </div>
         <div>If you haven't made this request. simply ignore the mail and no changes will be made</div>
         `
         
         const receiverMail = req.body.email
         sendEmail({html,subject,receiverMail})
-        return res.status(200).json({msg:"Password reset"})
+        return res.status(200).json({msg:"Mail sent with link to reset password"})
     }catch(err){
         return res.status(500).json({msg:"Something went wrong.."})
     }
