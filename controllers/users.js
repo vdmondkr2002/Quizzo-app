@@ -68,7 +68,7 @@ exports.signUp = async(req,res)=>{
         <div>To complete your Sign Up and To access your account, Please verify your email address:</div>
         <a href="#">${email}</a>
         <div>
-        <a href="https://serene-clarke-e61d2d.netlify.app/verifyMail/${confirmationCode}" style="background-color:red;color:white;padding:10px;text-decoration:none;font-weight:bold;margin-top:"30px"> Verify Email Address </a>
+        <a href="https://quizzo-v1.netlify.app/verifyMail/${confirmationCode}" style="background-color:red;color:white;padding:10px;text-decoration:none;font-weight:bold;margin-top:"30px"> Verify Email Address </a>
         </div>
         `
         const receiverMail = email
