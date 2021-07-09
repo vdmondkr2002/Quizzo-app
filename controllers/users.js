@@ -58,17 +58,17 @@ exports.signUp = async(req,res)=>{
             id:newUser._id
         }
 
-        const confirmationCode = jwt.sign(payload,process.env.TOKEN_SECRET,{expiresIn:"5m"})
+        const confirmationCode = jwt.sign(payload,process.env.TOKEN_SECRET,{expiresIn:"1d"})
 
         const subject = `[Quizzo]Welcome! Please verify your email address.`
         // const subject = "Hello"
         // const body = "Hello"
         const html = `
         <h3>Welcome to Quizzo, ${userName}!</h3> 
-        <div>To complete your Sign Up and To access your account, Please verify your email address:</div>
+        <div>To complete your Sign Up and To access your account, Please verify your email address,within a day:</div>
         <a href="#">${email}</a>
         <div>
-        <a href="https://quizzo-v1.netlify.app/verifyMail/${confirmationCode}" style="background-color:red;color:white;padding:10px;text-decoration:none;font-weight:bold;margin-top:"30px"> Verify Email Address </a>
+        <a href="https://quizzo-v1.netlify.app/verifyMail/${confirmationCode}"> Verify Email Address </a>
         </div>
         `
         const receiverMail = email
@@ -109,7 +109,7 @@ exports.signIn = async(req,res)=>{
             id: oldUser._id
         }
 
-        const token = jwt.sign(payload, process.env.TOKEN_SECRET, { expiresIn: "10m" });
+        const token = jwt.sign(payload, process.env.TOKEN_SECRET, { expiresIn: "3h" });
         console.log(token);
         return res.status(200).json(token)
     }catch(err){
@@ -133,7 +133,7 @@ exports.sendResetEmail = async(req,res)=>{
             email:oldUser.email,
             id:oldUser._id
         }
-        const resetCode = jwt.sign(payload,process.env.TOKEN_SECRET,{expiresIn:"5m"})
+        const resetCode = jwt.sign(payload,process.env.TOKEN_SECRET,{expiresIn:"30m"})
         const subject = "[Quizzo] Link Reset Your password"
         const html = `
         <h3>To reset Your password follow the link below:</h3>
@@ -200,7 +200,7 @@ exports.signInWithCode = async(req,res)=>{
             id: user._id
         }
 
-        const token = jwt.sign(payload, process.env.TOKEN_SECRET, { expiresIn: "1h" });
+        const token = jwt.sign(payload, process.env.TOKEN_SECRET, { expiresIn: "3h" });
         console.log(token);
         // return res.status(200).json({ profile: {email:oldUser.email,firstName:oldUser.firstName,lastName:oldUser.lastName,userName:oldUser.userName,id:oldUser._id,profilePic:oldUser.profilePic}, token });
         return res.status(200).json(token)

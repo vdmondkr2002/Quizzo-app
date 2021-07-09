@@ -14,6 +14,7 @@ import Profile from './components/ProfilePageComponents/ProfilePage'
 import Report from './components/ProfilePageComponents/ReportDialog'
 import CreateQuestion from './components/CreateQuestionComponents/Form'
 import Contributed from './components/QContributedComponents/Contributed'
+import NotFound from './components/ErrorPages/404/error404'
 
 import TakeQuiz from './components/QuizInputComponents/QuizInput'
 import CategoryQuizInput from './components/CategoryQuizInputComponents/CategoryQuizInput'
@@ -24,6 +25,7 @@ import ResetPassword from './components/Utils/ResetPassword'
 import {theme} from './components/theme/theme'
 import Footer from './components/Footer/Footer'
 import { loadUser } from './actions/auth';
+
 import PrivateRoute from './components/Utils/PrivateRoute';
 
 
@@ -51,6 +53,8 @@ const App = ()=> {
                 <Route exact path="/" component={LandingPage}/>
                 <Route exact path="/register" component={RegisterPage}/>
                 <Route exact path="/login" component={LoginPage}/>
+                <Route exact path="/verifyMail/:code" component={VerifyMail}/>
+                <Route exact path="/resetPassword/:code" component={ResetPassword}/>
                 <PrivateRoute exact path="/dashboard" component={Dashboard}/> 
                 <PrivateRoute exact path="/profile" component={Profile}/>                 
                 <PrivateRoute exact path="/takequiz/input/random" component={TakeQuiz}/>
@@ -60,10 +64,9 @@ const App = ()=> {
                 <PrivateRoute exact path="/report/:reportId" component={Report}/>
                 <PrivateRoute exact path="/contributed" component={Contributed}/>
                 <PrivateRoute exact path="/createquestion" component={CreateQuestion}/>
-                <Route exact path="/about" component={About}/>
                 <PrivateRoute exact path="/score" component={Score}/>
-                <Route exact path="/verifyMail/:code" component={VerifyMail}/>
-                <Route exact path="/resetPassword/:code" component={ResetPassword}/>
+                <Route exact path="/about" component={About}/>
+                <Route exact path="/notfound" component={NotFound}/>
               </Switch>
               <Footer/>
             </Container>
