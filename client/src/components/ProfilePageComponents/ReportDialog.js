@@ -143,6 +143,11 @@ const useStyles = makeStyles((theme) => ({
     pagination: {
         display: "flex",
         justifyContent: "center"
+    },
+    boxPadding:{
+        "@media (max-width : 500px)":{
+            padding:"0.2em",
+        }
     }
 }))
 
@@ -150,7 +155,7 @@ const useStyles = makeStyles((theme) => ({
 
 const TabPanel = (props) => {
     const { children, value, index, ...other } = props;
-
+    const classes = useStyles()
     return (
         <div
             role="tabpanel"
@@ -160,8 +165,8 @@ const TabPanel = (props) => {
             {...other}
         >
             {value === index && (
-                <Box p={3}>
-                    <Typography>{children}</Typography>
+                <Box p={3} className={classes.boxPadding}>
+                    <div>{children}</div>
                 </Box>
             )}
         </div>
@@ -248,32 +253,33 @@ const ReportDialog = ({ match }) => {
         <Container className={classes.formCont}>
             <Paper className={classes.paper}>
                 <Grid className={classes.parent} container spacing={2}>
-                    <Grid item sm={12} className={classes.paperOuterGrid}>
+                    <Grid item sm={12} xs={12} className={classes.paperOuterGrid}>
                         <Paper className={classes.title}>
                             <Typography variant="h6">
                                 Quiz Report
                             </Typography>
                         </Paper>
                     </Grid>
-                    <Grid item sm={4} className={classes.reportImgCont}>
-                        <CardMedia
+                    <Grid item sm={4} xs={12} className={classes.reportImgCont}>
+                        <img width="100%" src={reportImg} alt="Quiz Report"/>
+                        {/* <CardMedia
                             component="img"
                             alt="Create quiz"
                             image={reportImg}
                             title="Create quiz"
                             className={classes.cardImg}
-                        />
+                        /> */}
                     </Grid>
-                    <Grid item sm={8}>
+                    <Grid item sm={8} xs={12}>
                         <Grid container spacing={2}>
-                            <Grid item sm={12}>
+                            <Grid item xs={12}>
                                 <Paper className={classes.totalQuestions}>
                                     <Typography className={classes.totals}>Total Questions: {noOfqs}</Typography>
                                     <Typography className={classes.totals}>Total Time: {Math.floor(noOfqs * 20 / 60) < 10 ? "0" + Math.floor(noOfqs * 20 / 60) : Math.floor(noOfqs * 20 / 60)}:{(noOfqs * 20) % 60 < 10 ? "0" + (noOfqs * 20) % 60 : (noOfqs * 20) % 60}</Typography>
                                 </Paper>
 
                             </Grid>
-                            <Grid item sm={12}>
+                            <Grid item xs={12}>
                                 <AppBar position="static" color="default">
                                     <Tabs
                                         value={tabValue}
@@ -295,7 +301,7 @@ const ReportDialog = ({ match }) => {
                                 >
                                     <TabPanel value={tabValue} index={0} dir={theme.direction}>
                                         <Grid container spacing={2}>
-                                            <Grid className={classes.circleCont} item sm={4}>
+                                            <Grid className={classes.circleCont} item sm={4} xs={12}>
                                                 <Button className={classes.outerButton}>
                                                     <Paper className={classes.circlePaper}>
                                                         <Typography className={classes.circleTitle1}>Attempted: {attempted}</Typography>
@@ -303,7 +309,7 @@ const ReportDialog = ({ match }) => {
                                                     </Paper>
                                                 </Button>
                                             </Grid>
-                                            <Grid className={classes.circleCont} item sm={4}>
+                                            <Grid className={classes.circleCont} item sm={4} xs={12}>
                                                 <Button className={classes.outerButton}>
                                                     <Paper className={classes.circlePaper}>
                                                         <Typography className={classes.circleTitle2}>Correct: {noOfCorrect}</Typography>
@@ -312,7 +318,7 @@ const ReportDialog = ({ match }) => {
                                                 </Button>
 
                                             </Grid>
-                                            <Grid className={classes.circleCont} item sm={4}>
+                                            <Grid className={classes.circleCont} item sm={4} xs={12}>
                                                 <Button className={classes.outerButton}>
                                                     <Paper className={classes.circlePaper}>
                                                         <Typography className={classes.circleTitle3}>Incorrect: {attempted - noOfCorrect}</Typography>
@@ -320,7 +326,7 @@ const ReportDialog = ({ match }) => {
                                                     </Paper>
                                                 </Button>
                                             </Grid>
-                                            <Grid className={classes.circleCont} item sm={4}>
+                                            <Grid className={classes.circleCont} item sm={4} xs={12}>
                                                 <Button className={classes.outerButton}>
                                                     <Paper className={classes.circlePaper}>
                                                         <Typography className={classes.circleTitle4}>Time taken: {Math.floor(Math.round(timeTaken) / 60) < 10 ? "0" + Math.floor(Math.round(timeTaken) / 60) : Math.floor(Math.round(timeTaken) / 60)}:{Math.round(timeTaken) % 60 < 10 ? "0" + Math.round(timeTaken) % 60 : Math.round(timeTaken) % 60}  mins</Typography>
@@ -332,36 +338,36 @@ const ReportDialog = ({ match }) => {
                                     </TabPanel>
                                     <TabPanel value={tabValue} index={1} dir={theme.direction}>
                                         <Grid container spacing={2}>
-                                            <Grid item sm={12}>
+                                            <Grid item xs={12}>
                                                 {
                                                     questions.length !== 0 ? (
                                                         <Pagination className={classes.pagination} count={questions.length} page={page} onChange={handleChangePage} />
                                                     ) : null
                                                 }
                                             </Grid>
-                                            <Grid item sm={12}>
+                                            <Grid item xs={12}>
                                                 {
                                                     questions.length !== 0 ? (
                                                         <Paper className={classes.quizCont}>
                                                             <Grid className={classes.qInnerContainer} container spacing={2}>
-                                                                <Grid item sm={12} className={classes.questionCont}>
+                                                                <Grid item xs={12} className={classes.questionCont}>
 
                                                                     {selectedOption === questions[page - 1].correct_answer && questions[page - 1].marked_done ? <Typography variant="h6" className={clsx(classes.question, classes.correctAns)}>Correct Answer</Typography> : null}
                                                                     {!questions[page - 1].marked_done ? <Typography variant="h6" className={clsx(classes.question, classes.notAttempt)}>Not attempted</Typography> : null}
                                                                     {selectedOption !== questions[page - 1].correct_answer && questions[page - 1].marked_done ? <Typography variant="h6" className={clsx(classes.question, classes.inCorrectAns)}>Inorrect Answer</Typography> : null}
                                                                 </Grid>
-                                                                <Grid item sm={12} className={classes.questionCont}>
+                                                                <Grid item xs={12} className={classes.questionCont}>
                                                                     <Typography variant="h6" className={classes.question}>
                                                                         {questions[page - 1].question}
                                                                     </Typography>
                                                                 </Grid>
-                                                                <Grid item sm={12}>
+                                                                <Grid item xs={12}>
 
                                                                     <Grid container spacing={2}>
                                                                         {
                                                                             questions.length !== 0 ? (
                                                                                 questions[page - 1].options.map((option) => (
-                                                                                    <Grid item sm={6} className={classes.optionInnerCont}>
+                                                                                    <Grid item sm={6} xs={12} className={classes.optionInnerCont}>
                                                                                         <OptionRadio
                                                                                             disabled={true}
                                                                                             checked={(selectedOption === option) && (questions[page - 1].marked_done)}
@@ -381,7 +387,7 @@ const ReportDialog = ({ match }) => {
 
                                                                     </Grid>
                                                                 </Grid>
-                                                                <Grid item sm={12} className={classes.btnContainer}>
+                                                                <Grid item xs={12} className={classes.btnContainer}>
                                                                     <Button onClick={() => setPage(prev => prev === 1 ? 1 : prev - 1)} color="primary" variant="contained">
                                                                         Prev
                                                                     </Button>

@@ -25,7 +25,7 @@ import Alert from '../Utils/Alert'
 const useStyles = makeStyles((theme)=>({
     formCont:{
         marginTop:"5em",
-        width:"auto"
+        width:"auto",
     },
     paper:{
         display:"flex",
@@ -169,7 +169,7 @@ const Dashboard = ()=>{
                     <Grid item xs={12}>
                         <Paper className={classes.mainPaper}>
                             <Grid container spacing={2}>
-                                <Grid item sm={8} className={classes.descCont}>
+                                <Grid item sm={8} xs={12} className={classes.descCont}>
                                     <Typography variant="h2" className={classes.appName}>
                                         Quizzo
                                     </Typography>
@@ -180,8 +180,8 @@ const Dashboard = ()=>{
                                         Take a Quiz
                                     </Button>
                                 </Grid>
-                                <Grid item sm={4}>
-                                    <img width="400px" src={laptopImg} alt="Laptop"/>
+                                <Grid item sm={4} xs={12}>
+                                    <img width="100%" src={laptopImg} alt="Laptop"/>
                                 </Grid>
                             </Grid>
                         </Paper>

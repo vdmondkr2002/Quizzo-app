@@ -39,17 +39,17 @@ const PastQuizzes = () => {
                 reports.length !== 0 ? (
                     <Grid container spacing={2}>
                         {reports.map((report, index) => (
-                            <Grid key={index} item sm={12}>
+                            <Grid key={index} item xs={12}>
                                 <Button className={classes.outerButton}>
                                     <Paper className={classes.quizPaper}>
                                         <Grid container spacing={1}>
-                                            <Grid item sm={6}>
+                                            <Grid item sm={6} xs={12}>
                                                 <Typography style={{ textAlign: "left" }} className={classes.repDetails}>Quiz taken: {moment(report.createdAt).fromNow()}</Typography>
                                             </Grid>
-                                            <Grid item sm={6}><Typography style={{ textAlign: "right" }} className={classes.repDetails}>Category: {report.category ? report.category : "Random"}</Typography></Grid>
-                                            <Grid item sm={6}><Typography style={{ textAlign: "left" }} className={classes.repDetails}>Total Questions: {report.questions.length}</Typography></Grid>
-                                            <Grid item sm={6}><Typography style={{ textAlign: "right" }} className={classes.repDetails}>Score: {report.score}</Typography></Grid>
-                                            <Grid item sm={12}>
+                                            <Grid item sm={6} xs={12}><Typography style={{ textAlign: "right" }} className={classes.repDetails}>Category: {report.category ? report.category : "Random"}</Typography></Grid>
+                                            <Grid item sm={6} xs={12}><Typography style={{ textAlign: "left" }} className={classes.repDetails}>Total Questions: {report.questions.length}</Typography></Grid>
+                                            <Grid item sm={6} xs={12}><Typography style={{ textAlign: "right" }} className={classes.repDetails}>Score: {report.score}</Typography></Grid>
+                                            <Grid item xs={12}>
                                                 <Button component={Link} to={`/report/${report._id}`} variant="contained" fullWidth color="primary">
                                                     See full report
                                                 </Button>

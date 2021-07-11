@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { Container, Grid, makeStyles, Paper, Box, FormControl, InputLabel, OutlinedInput, Typography, CardMedia, TextField, Button } from '@material-ui/core'
 import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
 import clsx from 'clsx'
-import man1Img from '../../images/man-1.jpg'
+import thinkingImg from '../../images/man-1.jpg'
 
 import { getCategoryQuizqs } from '../../actions/quizqs'
 import { checkLoggedIn } from '../../actions/auth';
@@ -48,13 +48,21 @@ const useStyles = makeStyles((theme) => ({
     },
     formContainer: {
         display: "flex",
-        alignItems: "center"
+        alignItems: "flex-start"
     },
     inputField: {
         color: '#fff'
     },
     MuiFocused: {
         color: "#fff"
+    },
+    instrTitle:{
+        fontWeight: 600
+    },
+    instrPaper:{
+        padding:"0.4em",
+        color:"white",
+        backgroundColor:"#9F7FFD"
     }
 }))
 const QuizInput = () => {
@@ -72,21 +80,17 @@ const QuizInput = () => {
         <Container className={classes.formCont}>
             <Paper className={classes.outerPaper}>
                 <Grid container spacing={3}>
-                    <Grid item xs={12} sm={12}>
+                    <Grid item xs={12}>
                         <Paper className={classes.paper}>
                             <Box>
                                 <Typography variant="h6" className={classes.title}>
-                                    <PlayCircleFilledWhiteIcon /> Take a quiz which has mixture of questions on GK!
+                                    Take a quiz which has mixture of questions on GK!
                                 </Typography>
                             </Box>
                         </Paper>
                     </Grid>
                     <Grid item xs={12} sm={4}>
-                        <CardMedia
-                            component="img"
-                            alt="Enlighten"
-                            image={man1Img}
-                        />
+                        <img src={thinkingImg} width="85%" alt="Thinking person"/>
                     </Grid>
                     <Grid item xs={12} sm={6} className={classes.formContainer}>
                         <Paper color="primary" className={classes.formPaper}>
@@ -123,6 +127,26 @@ const QuizInput = () => {
                                     </Grid>
                                 </Grid>
                             </form>
+                        </Paper>
+                    </Grid>
+                    <Grid item sm={4}></Grid>
+                    <Grid item xs={12} sm={8} className={classes.formContainer}>
+                        <Paper className={classes.instrPaper}>
+                            <Typography className={classes.instrTitle}>
+                                Instructions For Quiz:
+                            </Typography>
+                            <ol>
+                                <li>
+                                    <Typography>
+                                        Don't reload page, while you are attempting a quiz!
+                                    </Typography>
+                                </li>
+                                <li>
+                                    <Typography >
+                                        The question is marked as done only when you click on the submit option for that button, simply marking question and clicking on next will not submit question
+                                    </Typography>
+                                </li>
+                            </ol>
                         </Paper>
                     </Grid>
                 </Grid>

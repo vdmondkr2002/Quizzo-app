@@ -32,7 +32,6 @@ const Alert = () => {
         {
             openAlert?(
                 <Snackbar
-                    style={{ top: "10%", left: "55%" }}
                     anchorOrigin={{ horizontal: "center", vertical: "top" }}
                     open={openAlert}
                     autoHideDuration={5000}

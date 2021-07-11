@@ -32,7 +32,8 @@ import PrivateRoute from './components/Utils/PrivateRoute';
 const useStyles = makeStyles((theme)=>({
   root:{
     padding:0,
-    maxWidth:"100vw"
+    maxWidth:"100vw",
+    position:"relative"
   }
 })) 
 

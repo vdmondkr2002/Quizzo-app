@@ -65,13 +65,13 @@ const ReportCharts = () => {
                     <Paper className={classes.graphPaper}>
                         <RadioGroup aria-label="gender" name="gender1" value={reportValue} onChange={handleClickReportRadio}>
                             <Grid container>
-                                <Grid item sm={3}>
+                                <Grid item sm={3} xs={12}>
                                     <FormControlLabel checked={reportValue === "daily"} name="daily" control={<Radio />} label="Daily Report" />
                                 </Grid>
-                                <Grid item sm={3}>
+                                <Grid item sm={3} xs={12}>
                                     <FormControlLabel checked={reportValue === "weekly"} name="weekly" control={<Radio />} label="Weekly Report" />
                                 </Grid>
-                                <Grid item sm={3}>
+                                <Grid item sm={3} xs={12}>
                                     <FormControlLabel checked={reportValue === "monthly"} name="monthly" control={<Radio />} label="Monthly Report" />
                                 </Grid>
                             </Grid>

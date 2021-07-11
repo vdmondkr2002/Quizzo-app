@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme)=>({
     paper:{
         padding:"1em",
         height:"auto"
-        // position:"relative"
     },
     parent:{
         height:"100%",
@@ -34,7 +33,6 @@ const useStyles = makeStyles((theme)=>({
         flexDirection:"column",
         textAlign:"center",
         alignItems:"center",
-        position:"relative",
         height:"auto",
         backgroundColor:"rgb(288,30,21)",
         padding:"0.5em 0 0.5em 0",
@@ -52,9 +50,6 @@ const useStyles = makeStyles((theme)=>({
     },
     sidebarInnerGrid:{
         height:"30em"
-    },
-    AvatarCont:{
-        position:"relative"
     },
     largeAvatar:{
         margin:"auto",
@@ -127,12 +122,18 @@ const useStyles = makeStyles((theme)=>({
     graphPaper:{
         padding:"0.5em",
         textAlign:"center"
+    },
+    boxPadding:{
+        "@media (max-width : 500px)":{
+            padding:"0.2em",
+        }
     }
 }))
 
 
 const TabPanel = (props)=>{
     const { children, value, index, ...other } = props;
+    const classes = useStyles()
 
     return (
         <div
@@ -143,7 +144,7 @@ const TabPanel = (props)=>{
         {...other}
         >
         {value === index && (
-            <Box p={3}>
+            <Box p={3} className={classes.boxPadding}>
             <div>{children}</div>
             </Box>
         )}
@@ -203,18 +204,18 @@ const ProfilePage = ()=>{
             <Alert/>
             <Paper className={classes.paper}>
                 <Grid className={classes.parent} container spacing={2}>
-                    <Grid item sm={12} className={classes.paperOuterGrid}>
+                    <Grid item xs={12} className={classes.paperOuterGrid}>
                         <Paper className={classes.title}>
                             <Typography variant="h6">
                                 Hello, {user.userName}
                             </Typography>      
                         </Paper>
                     </Grid>
-                    <Grid item sm={3} className={classes.mainProfile}>
+                    <Grid item sm={3} xs={12} className={classes.mainProfile}>
                         <ProfileSideBar/>
                     </Grid>
-                    <Grid item sm={9}>
-                        <Paper className={classes.scoreBoardPaper}>
+                    <Grid item sm={9} xs={12}>
+                        {/* <Paper className={classes.scoreBoardPaper}> */}
                             <AppBar position="static" color="default">
                                 <Tabs
                                     value={tabValue}
@@ -245,7 +246,7 @@ const ProfilePage = ()=>{
                                     <ReportCharts/>
                                 </TabPanel>
                             </SwipeableViews>
-                        </Paper>
+                        {/* </Paper> */}
                     </Grid>
                 </Grid>
             </Paper>

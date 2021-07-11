@@ -146,12 +146,15 @@ const useStyles = makeStyles((theme) => ({
     pagination: {
         display: "flex",
         justifyContent: "center"
+    },
+    mainBox:{
+        padding:"10px"
     }
 }))
 
 const TabPanel = (props) => {
     const { children, value, index, ...other } = props;
-
+    const classes = useStyles()
     return (
         <div
             role="tabpanel"
@@ -161,7 +164,7 @@ const TabPanel = (props) => {
             {...other}
         >
             {value === index && (
-                <Box p={3}>
+                <Box className={classes.mainBox} p={3}>
                     {children}
                 </Box>
             )}

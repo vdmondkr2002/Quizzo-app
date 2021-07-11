@@ -236,7 +236,7 @@ const Form = () => {
                                     Add the options
                                 </Typography>
                                 <Grid container spacing={2}>
-                                    <Grid item xs={6}>
+                                    <Grid item sm={6} xs={12}>
                                         <FormControl required fullWidth className={clsx(classes.margin, classes.inputField)} variant="outlined">
                                             <InputLabel htmlFor="op1">Option 1</InputLabel>
                                             <OutlinedInput
@@ -260,7 +260,7 @@ const Form = () => {
                                             />
                                         </FormControl>
                                     </Grid> 
-                                    <Grid item xs={6}>
+                                    <Grid item sm={6} xs={12}>
                                         <FormControl required fullWidth className={clsx(classes.margin, classes.inputField)} variant="outlined">
                                             <InputLabel htmlFor="op2">Option 2</InputLabel>
                                             <OutlinedInput
@@ -285,7 +285,7 @@ const Form = () => {
                                             />
                                         </FormControl>
                                     </Grid>
-                                    <Grid item xs={6}>
+                                    <Grid item sm={6} xs={12}>
                                         <FormControl required fullWidth className={clsx(classes.margin, classes.inputField)} variant="outlined">
                                             <InputLabel htmlFor="op3">Option 3</InputLabel>
                                             <OutlinedInput
@@ -309,7 +309,7 @@ const Form = () => {
                                             />
                                         </FormControl>
                                     </Grid>
-                                    <Grid item xs={6}>
+                                    <Grid item sm={6} xs={12}>
                                         <FormControl required fullWidth className={clsx(classes.margin, classes.inputField)} variant="outlined">
                                             <InputLabel htmlFor="op4">Option 4</InputLabel>
                                             <OutlinedInput
@@ -336,7 +336,7 @@ const Form = () => {
                                             <FormHelperText required  variant="outlined" children="Password must be atleast 6 characters"/>
                                         </FormControl>
                                     </Grid>
-                                    <Grid item xs={8}>
+                                    <Grid item sm={8} xs={12}>
                                         <TextField
                                             name="correctOption"
                                             type="number"

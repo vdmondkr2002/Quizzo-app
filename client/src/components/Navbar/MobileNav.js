@@ -4,7 +4,7 @@ import React,{useState,useEffect} from 'react'
 import {Link as RouterLink,useHistory, useLocation} from 'react-router-dom'
 import { useDispatch,useSelector } from "react-redux";
 
-import {Link,Toolbar,Button,Menu,MenuItem,Avatar,Typography,IconButton,Drawer} from '@material-ui/core'
+import {Link,Toolbar,Button,Menu,MenuItem,Avatar,Typography,IconButton,Drawer,Grid} from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import {makeStyles} from '@material-ui/core/styles'
 
@@ -16,14 +16,20 @@ import {logOut} from '../../actions/auth'
 const useStyles = makeStyles((theme)=>({
     menuButton:{
         marginRight: theme.spacing(2),
-        // color:"white !important"
+        // color:"white !important",
+        "&:hover":{
+            color:"white"
+        }
     },
     logoCont:{
         marginRight:"auto"
     },
-    drawerContainer:{
+    navCont:{
+        flexDirection:"column",
         padding:"0.6em",
-        backgroundColor:"rgb(63,81,181)",
+    },
+    drawerContainer:{
+        
         margin:"0.5em",
         fontWeight:"500",
         borderRadius:"0.7em",
@@ -43,6 +49,9 @@ const useStyles = makeStyles((theme)=>({
     menuitemText:{
         fontWeight:"500",
         fontSize:"1rem"
+    },
+    navItems:{
+        width:"100%"
     }
 }))
 const MobileNav = ({mobileDrawer,setMobileDrawer}) => {
@@ -90,17 +99,19 @@ const MobileNav = ({mobileDrawer,setMobileDrawer}) => {
                 open={mobileDrawer.drawerOpen}
                 onClose={handleDrawerClose}
                 >
-                    <div className={classes.drawerContainer}>
-                        <Link
-                        to="/"
-                        component={RouterLink}
-                        color="white"
-                        key="Home"
-                        className={classes.menuButton}
-                        >
-                            <MenuItem>Home</MenuItem>    
-                        </Link>
-                        <Link
+                    <Grid container spacing={2} className={classes.navCont}>
+                        <Grid item >
+                            <Button component={RouterLink} variant="contained" to="/" color="primary" className={classes.navItems}>
+                                <MenuItem>Home</MenuItem>    
+                            </Button>
+                        </Grid>
+                        <Grid item >
+                            <Button component={RouterLink} variant="contained" color="primary" to="/about" className={classes.navItems}>
+                                <MenuItem>About Us</MenuItem> 
+                            </Button>
+                        </Grid>
+                        
+                        {/* <Link
                         to="/about"
                         component={RouterLink}
                         color="white"
@@ -108,8 +119,8 @@ const MobileNav = ({mobileDrawer,setMobileDrawer}) => {
                         className={classes.menuButton}
                         >
                             <MenuItem>About Us</MenuItem> 
-                        </Link>
-                    </div>
+                        </Link> */}
+                    </Grid>
                 </Drawer>
                 <Link href="#" color="inherit" className={classes.logoCont}>
                     <img src={logo} className={classes.logo} alt="Logo"/>
@@ -144,7 +155,7 @@ const MobileNav = ({mobileDrawer,setMobileDrawer}) => {
                             </Button>
                             </MenuItem>
                             <MenuItem onClick={handleAvatarMenuClose}>
-                            <Button component={RouterLink} color="inherit" to="/auth" className={classes.menuButton} onClick={logout}>
+                            <Button color="inherit" className={classes.menuButton} onClick={logout}>
                                 <Typography variant="h6" className={classes.menuitemText}>
                                     Logout
                                 </Typography>

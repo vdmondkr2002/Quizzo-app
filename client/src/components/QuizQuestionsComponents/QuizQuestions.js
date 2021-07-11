@@ -23,12 +23,9 @@ const useStyles = makeStyles((theme) => ({
         marginTop: "5em",
         width: "auto"
     },
-    box: {
-        backgroundImage: creativeThinkImg
-    },
     paper: {
         padding: "1em",
-        height: "30em"
+        height: "auto"
         // position:"relative"
     },
     paperOuterGrid: {
@@ -69,11 +66,11 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: "600",
         textAlign: "center"
     },
-    qContainer: {
-        position: "relative"
-    },
+    // qContainer: {
+    //     position: "relative"
+    // },
     cardImg: {
-        position: 'absolute',
+        // position: 'absolute',
         width: "max-content",
         height: "max-content",
         bottom: 0,
@@ -117,9 +114,12 @@ const useStyles = makeStyles((theme) => ({
     btnContainer2: {
         display: "flex",
         justifyContent: "center",
+        "@media (max-width : 500px)":{
+            flexGrow:1
+        }
     },
     qInnerContainer: {
-        position: "relative",
+        // position: "relative",
         zIndex: 3
     },
     checkIcon: {
@@ -130,9 +130,17 @@ const useStyles = makeStyles((theme) => ({
     },
     endQuizBtn: {
         width: "60%",
-        marginTop: "1.5em"
+        marginTop: "1.5em",
+        "@media (max-width : 500px)":{
+            width:"100%"
+        }
+    },
+    btn:{
+        "@media (max-width : 500px)":{
+            padding:"2px 5px !important",
+            margin:"1px !important"
+        }
     }
-
     // paper:{
     //     display:"flex",
     //     flexDirection:"column",
@@ -257,23 +265,23 @@ const QuizQuestions = ({ match }) => {
     return (
         <Container className={classes.formCont}>
             <Alert />
-            <Box position="relative" className={classes.box}>
+            <Box className={classes.box}>
                 <Paper className={classes.paper}>
                     <Grid className={classes.parent} container spacing={2}>
-                        <Grid item sm={3} className={classes.paperOuterGrid}>
+                        <Grid item sm={3} xs={12} className={classes.paperOuterGrid}>
                             <Paper className={classes.sidebarPaper}>
                                 <Grid container className={classes.sidebarInnerGrid} spacing={2}>
-                                    <Grid item sm={12} className={classes.dashboardTitleCont}>
+                                    <Grid item xs={12} className={classes.dashboardTitleCont}>
                                         <Typography className={classes.dashboardTitle}>Quiz Dashboard</Typography>
                                     </Grid>
-                                    <Grid item sm={12} className={classes.dashboardItems}>
+                                    <Grid item xs={12} className={classes.dashboardItems}>
                                         <Paper className={classes.circlePaper}>
                                             <Typography className={classes.circleTitle}>Solved</Typography>
                                             <CircularProgressWithLabel style={{ color: "rgba(255,255,2,0.3)" }} noOfqs={Number(noOfqs)} value={solved * 100 / noOfqs} />
                                         </Paper>
 
                                     </Grid>
-                                    <Grid item sm={12} className={classes.dashboardItems}>
+                                    <Grid item xs={12} className={classes.dashboardItems}>
                                         <Paper className={classes.circlePaper}>
                                             <Typography className={classes.circleTitle}>Timer</Typography>
                                             <CircularProgressWithClockQuiz style={{ color: "rgba(255,255,2,0.3)" }} noOfqs={Number(noOfqs)} value={progress} />
@@ -283,14 +291,14 @@ const QuizQuestions = ({ match }) => {
                                 </Grid>
                             </Paper>
                         </Grid>
-                        <Grid className={classes.qContainer} item sm={9}>
-                            <CardMedia
+                        <Grid className={classes.qContainer} item sm={9} xs={12}>
+                            {/* <CardMedia
                                 component="img"
                                 alt="Create quiz"
                                 image={creativeThinkImg}
                                 title="Create quiz"
                                 className={classes.cardImg}
-                            />
+                            /> */}
                             {
                                 questions.length !== 0 ? (
                                     <Pagination count={questions.length} page={page} onChange={handleChangePage} />
@@ -300,16 +308,16 @@ const QuizQuestions = ({ match }) => {
                                 questions.length !== 0 ? (
                                     <Paper className={classes.quizCont}>
                                         <Grid className={classes.qInnerContainer} container spacing={2}>
-                                            <Grid item sm={12} className={classes.questionCont}>
+                                            <Grid item xs={12} className={classes.questionCont}>
                                                 <Typography variant="h6" className={classes.question}>
                                                     {questions[page - 1].question}
                                                 </Typography>
                                             </Grid>
-                                            <Grid item sm={12}>
+                                            <Grid item xs={12}>
                                                 <Grid container spacing={2}>
                                                     {
                                                         questions[page - 1].options.map((option) => (
-                                                            <Grid item sm={6} className={classes.optionInnerCont}>
+                                                            <Grid item sm={6} xs={12} className={classes.optionInnerCont}>
                                                                 <OptionRadio
                                                                     disabled={questions[page - 1].marked_done ? true : false}
                                                                     checked={selectedOption === option}
@@ -328,8 +336,8 @@ const QuizQuestions = ({ match }) => {
                                                     }
                                                 </Grid>
                                             </Grid>
-                                            <Grid item sm={12} className={classes.btnContainer}>
-                                                <Button onClick={() => setPage(prev => prev === 1 ? 1 : prev - 1)} color="primary" variant="contained">
+                                            <Grid item xs={12} className={classes.btnContainer}>
+                                                <Button onClick={() => setPage(prev => prev === 1 ? 1 : prev - 1)} color="primary" variant="contained" className={classes.btn}>
                                                     Prev
                                                 </Button>
                                                 {
@@ -343,11 +351,11 @@ const QuizQuestions = ({ match }) => {
                                                         </Button>
                                                     )
                                                 }
-                                                <Button onClick={() => setPage(prev => prev === Number(noOfqs) ? Number(noOfqs) : prev + 1)} color="primary" variant="contained">
+                                                <Button onClick={() => setPage(prev => prev === Number(noOfqs) ? Number(noOfqs) : prev + 1)} color="primary" variant="contained" className={classes.btn}>
                                                     Next
                                                 </Button>
                                             </Grid>
-                                            <Grid item sm={12} className={classes.btnContainer2}>
+                                            <Grid item xs={12} className={classes.btnContainer2}>
                                                 <Button onClick={handleEndQuiz} className={classes.endQuizBtn} variant="contained" color="primary">
                                                     End Quiz
                                                 </Button>

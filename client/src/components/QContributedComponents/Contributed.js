@@ -190,33 +190,27 @@ const Contributed = () => {
         <Container className={classes.formCont}>
             <Paper className={classes.paper}>
                 <Grid className={classes.parent} container spacing={2}>
-                    <Grid item sm={12} className={classes.paperOuterGrid}>
+                    <Grid item xs={12} className={classes.paperOuterGrid}>
                         <Paper className={classes.title}>
                             <Typography variant="h6">
                                 {userName}'s Contributed Questions
                             </Typography>
                         </Paper>
                     </Grid>
-                    <Grid item sm={4} className={classes.reportImgCont}>
-                        <CardMedia
-                            component="img"
-                            alt="Create quiz"
-                            image={contriImg}
-                            title="Create quiz"
-                            className={classes.cardImg}
-                        />
+                    <Grid item sm={4} xs={12} className={classes.reportImgCont}>
+                        <img  width="100%" src={contriImg} alt="Contrbuted Questions"/>
                     </Grid>
-                    <Grid item sm={8}>
+                    <Grid item sm={8} xs={12}>
                         <Grid container spacing={2}>
-                            <Grid item sm={12}>
+                            <Grid item xs={12}>
                                 <Paper className={classes.totalQuestions}>
                                     <Typography className={classes.totals}>Total Questions: {noOfqs}</Typography>
                                 </Paper>
 
                             </Grid>
-                            <Grid item sm={12}>
+                            <Grid item xs={12}>
                                 <Grid container spacing={2}>
-                                    <Grid item sm={12}>
+                                    <Grid item xs={12}>
                                         {
                                             questions.length !== 0 ? (
                                                 <Pagination className={classes.pagination} count={questions.length} page={page} onChange={handleChangePage} />
@@ -229,18 +223,18 @@ const Contributed = () => {
                                                 <Paper className={classes.quizCont}>
                                                     <Grid className={classes.qInnerContainer} container spacing={2}>
 
-                                                        <Grid item sm={12} className={classes.questionCont}>
+                                                        <Grid item xs={12} className={classes.questionCont}>
                                                             <Typography variant="h6" className={classes.question}>
                                                                 {questions[page - 1].question}
                                                             </Typography>
                                                         </Grid>
-                                                        <Grid item sm={12}>
+                                                        <Grid item xs={12}>
 
                                                             <Grid container spacing={2}>
                                                                 {
                                                                     questions.length !== 0 ? (
                                                                         questions[page - 1].options.map((option) => (
-                                                                            <Grid item sm={6} className={classes.optionInnerCont}>
+                                                                            <Grid item sm={6} xs={12} className={classes.optionInnerCont}>
                                                                                 <Typography className={questions[page - 1].correct_answer === option ? classes.correctOpt : classes.options}>
                                                                                     {option}
                                                                                 </Typography>
@@ -252,7 +246,7 @@ const Contributed = () => {
 
                                                             </Grid>
                                                         </Grid>
-                                                        <Grid item sm={12} className={classes.btnContainer}>
+                                                        <Grid item xs={12} className={classes.btnContainer}>
                                                             <Button onClick={() => setPage(prev => prev === 1 ? 1 : prev - 1)} color="primary" variant="contained">
                                                                 Prev
                                                             </Button>

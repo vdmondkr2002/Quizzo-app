@@ -19,12 +19,12 @@ exports.getquizReport=async(req,res)=>{
 exports.postQuizReport = async(req,res)=>{
     try{
 
-        const {data,score,time_taken,attempted} = req.body
+        const {data,score,time_taken,attempted,category} = req.body
 
        if(!req.userId)
             return res.status(401).json({msg:"Unauthorized"})
 
-        const quizReport = await QuizReport.create({author:req.userId,questions:data,score,time_taken,attempted})
+        const quizReport = await QuizReport.create({author:req.userId,questions:data,score,time_taken,attempted,category})
 
         const noOfcorrect = data.filter((item)=>item.correct_answer===item.selected_answer).length
         

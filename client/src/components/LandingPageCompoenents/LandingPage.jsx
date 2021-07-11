@@ -16,16 +16,26 @@ const useStyles = makeStyles((theme)=>({
         textAlign:"center",
         alignItems:"center",
         justifyContent:"center",
-        height:"100vh",
-        position:"relative",
-    },
-    imageContainer:{
+        height:"100vw",
         // position:"relative",
-        position:"absolute",
-        height:"100vh",
-        width:"100%",
-        filter:"brightness(70%)"
     },
+    bgImg:{
+        paddingTop:"4em",
+        textAlign:"center",
+        // maxHeight:"100vh",
+        backgroundImage: `url(${mainImage})`,
+        backgroundSize: "cover",
+        backgroundColor: "#777",
+        backgroundBlendMode: "multiply",
+        
+    },
+    // imageContainer:{
+    //     // position:"relative",
+    //     // position:"absolute",
+    //     height:"100vh",
+    //     width:"100%",
+    //     filter:"brightness(70%)"
+    // },
     loginButton:{
         // position:"relative",
         padding:"1em",
@@ -43,10 +53,11 @@ const useStyles = makeStyles((theme)=>({
         alignItems:"center"
     },
     innerPaper:{
-        position:"relative",
+        // position:"relative",
         height:"auto",
         width:"80%",
         padding:"1em",
+        margin:"1em 0 1em 0",
         backgroundColor:"rgba(255,230,225,0.9)"
         // filter:"brightness(100%)"
     },
@@ -85,10 +96,7 @@ const LandingPage = ()=>{
 
     const images = [{image:computerQuiz,info:"Take quizzes on various categories"},{image:contribute,info:"Contribute Questions on various categories"}]
     return (
-        <Grid container spacing={0}>
-            <Grid item xs={12}>
-                <Paper className={classes.paper}>   
-                    <img className={classes.imageContainer} src={mainImage} alt="Girl"/>  
+        <div className={classes.bgImg}> 
                     {/* <CardMedia
                         className={classes.imageContainer}
                         image={mainImage}
@@ -96,7 +104,6 @@ const LandingPage = ()=>{
                     /> */}
                     <Grid container className={classes.innerGrid}>
                         <Grid item sm={6} xs={12} className={classes.btnContainer}>
-                            
                             <Button component={RouterLink} to="/login" variant="contained" color="primary" className={classes.loginButton}>
                                 Sign Up To Have Fun
                             </Button>
@@ -136,27 +143,9 @@ const LandingPage = ()=>{
                             </Paper>
                         </Grid>
                     </Grid>
-                    
-
-                </Paper>
-            </Grid>
-        </Grid>
+        </div>
     )
 }
 
 export default LandingPage
 
-/* <div className="container">
-            <div className="row m-auto">
-                <div className="card card-body">
-                    <p>Create Account</p>
-                    <Link to="/register">
-                        <button className="btn btn-info">Register</button>
-                    </Link> 
-                    <p>Already have account?</p>
-                    <Link to="/login">
-                        <button className="btn btn-info">Login</button>
-                    </Link>
-                </div>
-            </div>
-        </div> */

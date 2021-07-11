@@ -64,7 +64,10 @@ const useStyles = makeStyles((theme)=>({
         flexDirection:"column",
         alignItems:"center",
         width:"70%",
-        margin:"auto"
+        margin:"auto",
+        "@media (max-width : 500px)": {
+            width:"100%"
+        },
     },
     formPaper:{
         padding:"0.3em",
@@ -80,6 +83,12 @@ const useStyles = makeStyles((theme)=>({
     root: {
         display: 'flex',
         flexWrap: 'wrap',
+    },
+    ipFields:{
+        flexGrow:1
+    },
+    submitBtn:{
+        width:"100%"
     }
 }))
 
@@ -206,7 +215,7 @@ const LoginPage = ()=>{
                                 !loginToggle?(
                                     <>
                                     
-                                        <Grid item sm={6}>
+                                        <Grid item sm={6} xs={12} className={classes.ipFields}>
                                             <TextField
                                                 name="firstName"
                                                 type="text"
@@ -219,7 +228,7 @@ const LoginPage = ()=>{
                                                 className={classes.inputField}
                                             />
                                         </Grid>
-                                        <Grid item sm={6}>
+                                        <Grid item sm={6} xs={12} className={classes.ipFields}>
                                             <TextField
                                                 name="lastName"
                                                 type="text"
@@ -235,7 +244,7 @@ const LoginPage = ()=>{
                                     </>
                                 ):null
                             }
-                            <Grid item sm={12}>
+                            <Grid item sm={12}  className={classes.ipFields}>
                                 <TextField
                                     name="email"
                                     type="email"
@@ -253,7 +262,7 @@ const LoginPage = ()=>{
                             {
                                 !loginToggle?(
                                     <>
-                                    <Grid item sm={12}>
+                                    <Grid item sm={12} className={classes.ipFields}>
                                         <TextField
                                         name="userName"
                                         type="text"
@@ -266,7 +275,7 @@ const LoginPage = ()=>{
                                         className={classes.inputField}
                                         />
                                     </Grid>
-                                    <Grid item sm={12}>
+                                    <Grid item sm={12} className={classes.ipFields}>
                                         <TextField
                                         name="bio"
                                         type="text"
@@ -281,7 +290,7 @@ const LoginPage = ()=>{
                                     </>
                                 ):null
                             }
-                            <Grid item sm={12}>
+                            <Grid item sm={12} className={classes.ipFields}>
                                 <FormControl required fullWidth className={clsx(classes.margin, classes.inputField)} variant="outlined">
                                     <InputLabel htmlFor="password">Password</InputLabel>
                                     <OutlinedInput
@@ -310,7 +319,7 @@ const LoginPage = ()=>{
                             
                             {
                                 !loginToggle?(
-                                    <Grid item sm={12}>
+                                    <Grid item sm={12} className={classes.ipFields}>
                                         <FormControl required fullWidth className={clsx(classes.margin, classes.inputField)} variant="outlined">
                                         <InputLabel htmlFor="confirmPassword">Confirm Your Password</InputLabel>
                                         <OutlinedInput
@@ -337,7 +346,7 @@ const LoginPage = ()=>{
                                     </Grid>
                                 ):null
                             }    
-                            <Grid item sm={12}>
+                            <Grid item sm={12} className={classes.submitBtn}>
                                 <Button
                                         variant="contained"
                                         type="submit"
@@ -346,9 +355,8 @@ const LoginPage = ()=>{
                                 >
                                     <Typography>Submit</Typography>
                                 </Button>
-                            </Grid>
-                                
-                            </Grid>
+                            </Grid>        
+                        </Grid>
                             
                         </form>
                         {

@@ -31,7 +31,9 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 700,
         lineHeight: "2em"
     },
-
+    contrCont:{
+        flexGrow:1
+    }
 
 }))
 const UserDashboard = () => {
@@ -44,7 +46,7 @@ const UserDashboard = () => {
             <Grid item sm={12}>
                 <Paper className={classes.firstPaper}>
                     <Grid container spacing={1}>
-                        <Grid item sm={6} className={classes.firstPaperGrid}>
+                        <Grid item sm={6} xs={12} className={classes.firstPaperGrid}>
                             <Button className={classes.outerButton}>
                                 <Paper className={classes.pointsAndquizes}>
                                     <Typography style={{ fontWeight: "700" }}>Points Scored</Typography>
@@ -53,7 +55,7 @@ const UserDashboard = () => {
                                 </Paper>
                             </Button>
                         </Grid>
-                        <Grid item sm={6} className={classes.firstPaperGrid}>
+                        <Grid item sm={6} xs={12} className={classes.firstPaperGrid}>
                             <Button className={classes.outerButton}>
                                 <Paper className={classes.pointsAndquizes}>
                                     <Typography style={{ fontWeight: "700" }}>Quizes Taken</Typography>
@@ -68,7 +70,7 @@ const UserDashboard = () => {
             <Grid item sm={12}>
                 <Paper className={classes.firstPaper}>
                     <Grid container spacing={1}>
-                        <Grid item sm={4} className={classes.firstPaperGrid}>
+                        <Grid item sm={4} xs={12} className={classes.firstPaperGrid}>
                             <Button className={classes.outerButton}>
                                 <Paper className={classes.pointsAndquizes}>
                                     <Typography style={{ fontWeight: "700" }}>Attempted</Typography>
@@ -77,7 +79,7 @@ const UserDashboard = () => {
                                 </Paper>
                             </Button>
                         </Grid>
-                        <Grid item sm={4} className={classes.firstPaperGrid}>
+                        <Grid item sm={4} xs={12} className={classes.firstPaperGrid}>
                             <Button className={classes.outerButton}>
                                 <Paper className={classes.pointsAndquizes}>
                                     <Typography style={{ fontWeight: "700" }}>Correctly Answered</Typography>
@@ -86,7 +88,7 @@ const UserDashboard = () => {
                                 </Paper>
                             </Button>
                         </Grid>
-                        <Grid item sm={4} className={classes.firstPaperGrid}>
+                        <Grid item sm={4} xs={12} className={classes.firstPaperGrid}>
                             <Button className={classes.outerButton}>
                                 <Paper className={classes.pointsAndquizes}>
                                     <Typography style={{ fontWeight: "700" }}>Accuracy</Typography>
@@ -97,7 +99,7 @@ const UserDashboard = () => {
                     </Grid>
                 </Paper>
             </Grid>
-            <Grid item sm={12}>
+            <Grid item sm={12} className={classes.contrCont}>
                 <Button className={classes.outerButton}>
                     <Paper className={classes.firstPaper}>
                         <Typography style={{ fontWeight: "700" }}>Questions Contributed</Typography>

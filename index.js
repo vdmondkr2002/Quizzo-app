@@ -16,6 +16,7 @@ app.get('/',(req,res)=>{
 })
 app.use((req, res, next) => {
     res.append("Access-Control-Allow-Origin", "https://quizzo-v1.netlify.app");
+    // res.append("Access-Control-Allow-Origin", "http://localhost:3000");
     res.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH");
     res.append(
       "Access-Control-Allow-Headers",
@@ -23,6 +24,7 @@ app.use((req, res, next) => {
     );
     res.append("Access-Control-Allow-Credentials", "true");
     res.append("Origin", "https://quizzo-v1.netlify.app");
+    // res.append("Origin", "http://localhost:3000");
     res.append("Access-Control-Max-Age", "86400");
     next();
 });

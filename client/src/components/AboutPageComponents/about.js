@@ -12,7 +12,8 @@ import knowledgeImg from '../../images/Learning-rafiki.svg'
 const useStyles = makeStyles((theme)=>({
     formCont:{
         marginTop:"5em",
-        width:"auto"
+        width:"auto",
+        position:"relative"
     },
     paper:{
         display:"flex",
@@ -72,8 +73,8 @@ const About=()=> {
                 </Grid>
                 <Grid item xs={12}>
                         <Paper className={classes.mainPaper}>
-                            <Grid container spacing={2}>
-                                <Grid item sm={8} className={classes.descCont}>
+                            <Grid container>
+                                <Grid item sm={8} xs={12} className={classes.descCont}>
                                     <Typography variant="h2" className={classes.boldText}>
                                         Quizzo
                                     </Typography>
@@ -124,15 +125,15 @@ const About=()=> {
                                     </a>
                                     
                                 </Grid>
-                                <Grid item sm={4}>
-                                    <img width="400px" src={laptopImg} alt="Laptop"/>
+                                <Grid item sm={4} xs={12}>
+                                    <img width="100%" src={laptopImg} alt="Laptop"/>
                                 </Grid>
                             </Grid>
                         </Paper>
                 </Grid>
                 <Grid item xs={12}>
                     <Grid container spacing={1}>
-                        <Grid item sm={4}>
+                        <Grid item sm={4} xs={12}>
                             <Paper className={classes.middlePaper}>
                                 <img src={takeQuizImg} alt="takequiz"/>
                                 <Box>
@@ -144,7 +145,7 @@ const About=()=> {
                                 </Box>
                             </Paper>
                         </Grid>
-                        <Grid item sm={4}>
+                        <Grid item sm={4} xs={12}>
                             <Paper className={classes.middlePaper}>
                                 <img src={contributeImg} alt="contribute questions"/>
                                 <Box>
@@ -156,7 +157,7 @@ const About=()=> {
                                 </Box>
                             </Paper>
                         </Grid>
-                        <Grid item sm={4}>
+                        <Grid item sm={4} xs={12}>
                             <Paper className={classes.middlePaper}>
                                 <img src={knowledgeImg} alt="knowledge"/>
                                 <Box>

@@ -27,13 +27,13 @@ const useStyles = makeStyles((theme) => ({
     sidebarInnerGrid: {
         height: "30em"
     },
-    AvatarCont: {
-        position: "relative"
-    },
     largeAvatar: {
         margin: "auto",
         width: "150px",
         height: "150px"
+    },
+    centering:{
+        margin:"auto"
     },
     camIcon: {
         padding: "8px"
@@ -52,15 +52,16 @@ const useStyles = makeStyles((theme) => ({
     },
     bioCont: {
         fontWeight: 700,
-        fontSize: "1.2em"
+        fontSize: "1.2em",
+        
     },
     userNameCont: {
         color: "blue",
-        fontWeight: 600
+        fontWeight: 600,
+        textAlign:"center"
     },
     editButtonCont: {
-        textAlign: "center",
-        margin: theme.spacing(1)
+        textAlign: "center"
     },
     editButton: {
         borderColor: "black"
@@ -153,7 +154,7 @@ const ProfileSideBar = () => {
         <Paper className={classes.sidebarPaper}>
             
             <Grid container className={classes.sidebarInnerGrid} spacing={1}>
-                <Grid item sm={12} className={classes.AvatarCont}>
+                <Grid item xs={12} className={classes.centering}>
                     <Avatar src={user?.profilePic} className={clsx(classes.largeAvatar)} alt={user?.userName}>
                         {user?.firstName?.charAt(0)} {user?.lastName?.charAt(0)}
 
@@ -171,18 +172,18 @@ const ProfileSideBar = () => {
                                     </IconButton> */}
 
                 </Grid>
-                <Grid item sm={12} className={classes.fullNameCont}>
+                <Grid item xs={12} className={clsx(classes.fullNameCont,classes.centering)}>
                     <Typography variant="body1">
                         {user.firstName} {user.lastName}
                     </Typography>
                 </Grid>
-                <Grid item sm={12} className={classes.userNameCont}>
+                <Grid item xs={12} className={clsx(classes.userNameCont,classes.centering)}>
 
                     <Typography variant="body1">
                         @{user.userName}
                     </Typography>
                 </Grid>
-                <Grid item sm={12}>
+                <Grid item xs={12}>
                     <Typography variant="body1" className={classes.bioCont}>
                         Bio
                     </Typography>
@@ -190,7 +191,7 @@ const ProfileSideBar = () => {
                         {user.bio}
                     </Typography>
                 </Grid>
-                <Grid item sm={12} className={classes.editButtonCont}>
+                <Grid item xs={12} className={clsx(classes.editButtonCont,classes.centering)}>
                     <Button onClick={handleClickOpenDialog} variant="outlined" endIcon={<EditIcon />}>
                         Edit Profile
                     </Button>
@@ -210,7 +211,7 @@ const ProfileSideBar = () => {
                                 className={classes.form}
                             >
                                 <Grid container spacing={2}>
-                                    <Grid item sm={6}>
+                                    <Grid item sm={6} xs={12}>
                                         <TextField
                                             name="firstName"
                                             type="text"
@@ -222,7 +223,7 @@ const ProfileSideBar = () => {
                                             className={classes.inputField}
                                         />
                                     </Grid>
-                                    <Grid item sm={6}>
+                                    <Grid item sm={6} xs={12}>
                                         <TextField
                                             name="lastName"
                                             type="text"
@@ -234,7 +235,7 @@ const ProfileSideBar = () => {
                                             className={classes.inputField}
                                         />
                                     </Grid>
-                                    <Grid item sm={12}>
+                                    <Grid item xs={12}>
                                         <TextField
                                             name="userName"
                                             type="text"
@@ -246,7 +247,7 @@ const ProfileSideBar = () => {
                                             className={classes.inputField}
                                         />
                                     </Grid>
-                                    <Grid item sm={12}>
+                                    <Grid item xs={12}>
                                         <TextField
                                             name="email"
                                             type="text"
@@ -258,7 +259,7 @@ const ProfileSideBar = () => {
                                             className={classes.inputField}
                                         />
                                     </Grid>
-                                    <Grid item sm={12}>
+                                    <Grid item xs={12}>
                                         <TextField
                                             name="bio"
                                             type="text"
@@ -285,8 +286,8 @@ const ProfileSideBar = () => {
                         </DialogActions>
                     </Dialog>
                 </Grid>
-                <Grid item sm={12} className={classes.editButtonCont}>
-                    <Button onClick={handleClickOpenDialog2} variant="outlined" endIcon={<VpnKeyIcon />}>
+                <Grid item className={classes.centering}>
+                    <Button onClick={handleClickOpenDialog2} variant="outlined"  endIcon={<VpnKeyIcon />} >
                         Change Password
                     </Button>
                     <Dialog
@@ -305,7 +306,7 @@ const ProfileSideBar = () => {
                                 className={classes.form}
                             >
                                 <Grid container spacing={2}>
-                            <Grid item sm={12}>
+                            <Grid item xs={12}>
                                 <FormControl required fullWidth className={clsx(classes.margin, classes.inputField)} variant="outlined">
                                     <InputLabel htmlFor="password">Password</InputLabel>
                                     <OutlinedInput
@@ -331,7 +332,7 @@ const ProfileSideBar = () => {
                                     <FormHelperText required  variant="outlined" children="Password must be atleast 6 characters"/>
                                 </FormControl>
                             </Grid>
-                            <Grid item sm={12}>
+                            <Grid item xs={12}>
                                     <FormControl required fullWidth className={clsx(classes.margin, classes.inputField)} variant="outlined">
                                         <InputLabel htmlFor="confirmPassword">Confirm Your Password</InputLabel>
                                         <OutlinedInput
