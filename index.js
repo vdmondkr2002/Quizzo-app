@@ -40,4 +40,4 @@ app.use('/api/v1/questions/',require('./routes/questions'))
 app.use('/api/v1/report/',require('./routes/quizReport'))
 
 
-app.listen(PORT,()=>console.log(`Server running on port ${PORT}`))
+app.listen(PORT,()=>console.log(`Server running on ${PORT}`))
