@@ -3,7 +3,7 @@
 * [Tech Stack Used](#tech-stack)
 * [Run on local Machine](#run-locally)
 
-# Description {#general-info}
+# Description
 Quizzo is the platform where you can take fun quizzes and save the scores update and even contribute questions.
 
 ## Project Demo
@@ -16,7 +16,7 @@ Quizzo is the platform where you can take fun quizzes and save the scores update
 #### https://quizzo-v1.netlify.app/
 
 
-# Tech Stack Used {#tech-stack}
+# Tech Stack Used 
 ### Front End-
 * React and Redux
 * Material UI for Styling
@@ -27,7 +27,7 @@ Quizzo is the platform where you can take fun quizzes and save the scores update
 * MongoDB
 
 
-# Run On Local Machine {#run-locally}
+# Run On Local Machine
 Step1 - Clone this repository using:
 ```
 $ git clone https://github.com/vdmondkr2002/Quizzo-app.git
