@@ -7,12 +7,18 @@
 Quizzo is the platform where you can take quizzes and save the scores update and even contribute questions.
 
 ## Project Demo
-![Demo gif](https://raw.githubusercontent.com/vdmondkr2002/Quizzo-app/main/Proj-demo-1.gif)
+#### Take a Quiz
+![Demo gif1](https://raw.githubusercontent.com/vdmondkr2002/Quizzo-app/main/Proj-demo-2.gif)
+#### Add a Question
+![Demo gif2](https://raw.githubusercontent.com/vdmondkr2002/Quizzo-app/main/Proj-demo-1.gif)
 
 ## Tech Stack Used
 #### 1.React-Redux
 #### 2.Node JS-Express
 #### 3.Mongo DB
+
+## Deployed Link-
+#### https://quizzo-v1.netlify.app/
 
 # Run On Local Machine
 Step1 - Clone this repository using:
