@@ -7,9 +7,9 @@
 Quizzo is the platform where you can take quizzes and save the scores update and even contribute questions.
 
 ## Tech Stack Used
-### 1.React-Redux
-### 2.Node JS-Express
-### 3.Mongo DB
+#### 1.React-Redux
+#### 2.Node JS-Express
+#### 3.Mongo DB
 
 # Run On Local Machine
 Step1 - Clone this repository using:
