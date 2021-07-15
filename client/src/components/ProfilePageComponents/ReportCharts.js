@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Line } from 'react-chartjs-2'
 
 
-import { Grid, Button, Paper, Typography, makeStyles, Radio, RadioGroup, FormControlLabel } from '@material-ui/core'
+import { Grid, Button, Paper, Typography, makeStyles, Radio, RadioGroup, FormControlLabel,useTheme } from '@material-ui/core'
 
 
 import { getDailyReport, getMonthlyReport, getWeeklyReport } from '../../actions/reports'
@@ -17,6 +17,7 @@ const useStyles = makeStyles(() => ({
 
 }))
 const ReportCharts = () => {
+    const theme = useTheme()
     const classes = useStyles()
     const dispatch = useDispatch()
     const sectionReport = useSelector(state => state.sectionReport)
@@ -45,8 +46,8 @@ const ReportCharts = () => {
                         label: "Your Daily Report",
                         data: sectionReport.map(rep => rep.data),
                         fill: false,
-                        backgroundColor: 'rgb(244,94,39)',
-                        borderColor: 'rgba(244,90,58,0.3)'
+                        backgroundColor: theme.palette.primary.dark,
+                        borderColor: theme.palette.primary.light
                     }
                 ]
             })

@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme)=>({
         textAlign:"center",
         alignItems:"center",
         height:"auto",
-        backgroundColor:"rgb(288,30,21)",
+        backgroundColor:theme.palette.primary.dark,
         padding:"0.5em 0 0.5em 0",
         color:"white",
         fontWeight:600,

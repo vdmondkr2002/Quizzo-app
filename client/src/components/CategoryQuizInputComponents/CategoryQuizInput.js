@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme)=>({
         alignItems:"center",
         position:"relative",
         height:"auto",
-        backgroundColor:"rgb(288,30,21)",
+        backgroundColor:theme.palette.primary.dark,
         padding:"0.5em 0 0.5em 0",
     },
     title:{
@@ -31,12 +31,12 @@ const useStyles = makeStyles((theme)=>({
         color:"white"
     },
     outerPaper:{
-        backgroundColor:theme.palette.primary.dark,
+        backgroundColor:"#E8F6EF",
         padding:"1em"
     },
     formPaper:{
         // backgroundColor:theme.palette.primary.dark,
-        backgroundColor:"#9F7FFD",
+        backgroundColor: theme.palette.primary.light,
         padding:"1em"
     },
     questionsTitle:{
@@ -49,11 +49,19 @@ const useStyles = makeStyles((theme)=>({
         display:"flex",
         alignItems:"center"
     },
-    inputField:{
-        color:'#fff'
+    inputField: {
+        color: '#0A1931'
     },
-    MuiFocused:{
-        color:"#fff"
+    MuiFocused: {
+        color: "#0A1931"
+    },
+    instrTitle:{
+        fontWeight: 600,
+        fontSize: "1.3em"
+    },
+    instrPaper:{
+        padding:"0.4em",
+        backgroundColor:theme.palette.primary.main
     }
 }))
 const CategoryQuizInput = ({match}) => {
@@ -83,11 +91,8 @@ const CategoryQuizInput = ({match}) => {
                             </Paper>
                     </Grid>
                     <Grid item xs={12} sm={4}>
-                        <CardMedia
-                            component="img"
-                            alt="Enlighten"
-                            image={catImgs[category]}
-                            />
+                        <img src={catImgs[category]} width="85%"
+                            alt="category"/>
                     </Grid>
                     <Grid item xs={12} sm={6} className={classes.formContainer}>
                         <Paper color="primary" className={classes.formPaper}>
@@ -126,6 +131,26 @@ const CategoryQuizInput = ({match}) => {
                             
                             
                         </form>
+                        </Paper>
+                    </Grid>
+                    <Grid item sm={4}></Grid>
+                    <Grid item xs={12} sm={8} className={classes.formContainer}>
+                        <Paper className={classes.instrPaper}>
+                            <Typography className={classes.instrTitle}>
+                                Instructions For Quiz:
+                            </Typography>
+                            <ol>
+                                <li>
+                                    <Typography>
+                                        Don't reload page, while you are attempting a quiz!
+                                    </Typography>
+                                </li>
+                                <li>
+                                    <Typography >
+                                        The question is marked as done only when you click on the submit option for that button, simply marking question and clicking on next will not submit question
+                                    </Typography>
+                                </li>
+                            </ol>
                         </Paper>
                     </Grid>
                 </Grid>

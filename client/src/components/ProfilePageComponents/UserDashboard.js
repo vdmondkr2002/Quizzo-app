@@ -10,7 +10,7 @@ import CircularProgressWithLabel from '../Utils/CircularProgressWithLabel'
 const useStyles = makeStyles((theme) => ({
 
     firstPaper: {
-        backgroundColor: "rgba(255,255,2,0.3)",
+        backgroundColor: "#DBE6FD",
         padding: "0.7em"
     },
     firstPaperGrid: {
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
         height: "100%"
     },
     pointsAndquizes: {
-        backgroundColor: "rgba(255,255,100,0.9)",
+        backgroundColor: "#E8F6EF",
         padding: "0.7em"
     },
     points: {
@@ -43,7 +43,7 @@ const UserDashboard = () => {
 
     return (
         <Grid container spacing={2}>
-            <Grid item sm={12}>
+            <Grid item xs={12}>
                 <Paper className={classes.firstPaper}>
                     <Grid container spacing={1}>
                         <Grid item sm={6} xs={12} className={classes.firstPaperGrid}>
@@ -67,7 +67,7 @@ const UserDashboard = () => {
                     </Grid>
                 </Paper>
             </Grid>
-            <Grid item sm={12}>
+            <Grid item xs={12}>
                 <Paper className={classes.firstPaper}>
                     <Grid container spacing={1}>
                         <Grid item sm={4} xs={12} className={classes.firstPaperGrid}>
@@ -99,7 +99,7 @@ const UserDashboard = () => {
                     </Grid>
                 </Paper>
             </Grid>
-            <Grid item sm={12} className={classes.contrCont}>
+            <Grid item xs={12} className={classes.contrCont}>
                 <Button className={classes.outerButton}>
                     <Paper className={classes.firstPaper}>
                         <Typography style={{ fontWeight: "700" }}>Questions Contributed</Typography>

@@ -67,7 +67,7 @@ const App = ()=> {
                 <PrivateRoute exact path="/createquestion" component={CreateQuestion}/>
                 <PrivateRoute exact path="/score" component={Score}/>
                 <Route exact path="/about" component={About}/>
-                <Route exact path="/notfound" component={NotFound}/>
+                <Route component={NotFound}/>
               </Switch>
               <Footer/>
             </Container>

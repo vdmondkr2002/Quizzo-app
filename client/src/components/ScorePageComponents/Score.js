@@ -41,14 +41,14 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
         position: "relative",
         height: "auto",
-        backgroundColor: "rgb(288,30,21)",
+        backgroundColor:theme.palette.primary.dark,
         padding: "0.5em 0 0.5em 0",
         color: "white",
         fontWeight: 600
     },
     totalQuestions: {
         display: "flex",
-        backgroundColor: "rgba(255,255,2,0.3)",
+        backgroundColor: "#DBE6FD",
         padding: "0.5em",
         textAlign: "center",
 
@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
         padding: 0
     },
     circlePaper: {
-        backgroundColor: "rgba(255,255,2,0.3)",
+        backgroundColor: "#DBE6FD",
         textTransform: "uppercase",
         padding: "0.5em",
         flexGrow: 1,
@@ -113,7 +113,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
         padding: "0.5em 1em",
         width: "fit-content",
-        backgroundColor: "rgba(255,255,2,0.3)",
+        backgroundColor: "#DBE6FD",
         borderRadius: "10px",
         flexGrow: 1
     },

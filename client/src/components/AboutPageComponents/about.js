@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme)=>({
         alignItems:"center",
         position:"relative",
         height:"auto",
-        backgroundColor:"rgb(288,30,21)",
+        backgroundColor:theme.palette.primary.light,
         padding:"0.5em 0 0.2em 0",
     },
     title:{
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme)=>({
     },
     mainPaper:{
         padding:"2em",
-        backgroundColor:"rgba(255,230,2,0.3)"
+        backgroundColor:"#E8F6EF"
     },
     descCont:{
         display:"flex",
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme)=>({
     },
     descPaper:{
         padding:"0.3em",
-        backgroundColor:"rgba(255,230,2,0.3)",
+        backgroundColor:theme.palette.primary.main,
         textAlign:"center"
     },
     link:{

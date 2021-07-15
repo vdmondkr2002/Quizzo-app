@@ -49,6 +49,8 @@ const useStyles = makeStyles((theme)=>({
     name:{
         marginLeft:"auto",
         textTransform:"uppercase",
+        fontWeight:600,
+        color:"#fff",
         padding:"0.5em"
     }
     
@@ -84,10 +86,14 @@ const DeskTopNav = () => {
                 </Link>
                 <div className={classes.middle}>
                     <Button component={RouterLink} to="/" color="inherit" className={classes.home}>
-                        Home
+                        <Typography variant="h6" className={classes.name}>
+                            Home
+                        </Typography>
                     </Button>
                     <Button component={RouterLink} color="inherit" to="/about" className={classes.about}>
-                        About
+                        <Typography variant="h6" className={classes.name}>
+                            About
+                        </Typography>
                     </Button>
                 </div>
                 {
@@ -134,7 +140,9 @@ const DeskTopNav = () => {
                 ):(
                     <>
                     <Button component={RouterLink} to="/login" color="inherit" className={classes.name}>
+                        <Typography variant="h6" className={classes.name}>
                         Sign Up/Login
+                        </Typography>
                     </Button>
                     </>
                 )

@@ -54,6 +54,6 @@
     ]
   },
   
-  "proxy": "http://localhost:5000/"
+  "proxy": "https://quizzo-web-v1.herokuapp.com/"
 }
 

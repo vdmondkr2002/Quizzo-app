@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react'
 import {Link as RouterLink,useHistory} from 'react-router-dom'
 
-import {makeStyles,Paper,Grid,Button,CardMedia, Typography} from '@material-ui/core'
+import {makeStyles,Paper,Grid,Button,CardMedia, Typography,useTheme} from '@material-ui/core'
 import Carousel from 'react-material-ui-carousel'
 
 import mainImage from '../../images/Quiz-image-1.jpg'
@@ -39,9 +39,10 @@ const useStyles = makeStyles((theme)=>({
     loginButton:{
         // position:"relative",
         padding:"1em",
-        backgroundColor:"#3017E8",
+        color:"#334257",
+        fontWeight:"500",
         "&:hover":{
-            color:"white"
+            color:"#334257"
         }
     },
     innerPaperContainer:{
@@ -58,7 +59,7 @@ const useStyles = makeStyles((theme)=>({
         width:"80%",
         padding:"1em",
         margin:"1em 0 1em 0",
-        backgroundColor:"rgba(255,230,225,0.9)"
+        backgroundColor:"#BEDCFA"
         // filter:"brightness(100%)"
     },
     computerQuiz:{
@@ -68,24 +69,24 @@ const useStyles = makeStyles((theme)=>({
         maxWidth: "6rem"
     },
     line1:{
-        color:"rgb(251,88,80)",
+        color:"#334257",
         padding:"0.5em",
         fontWeight:"600"
     },
     line2:{
-        color:"rgb(168, 115, 50)",
+        color:"#476072",
         padding:"0.5em",
         fontWeight:"600"
     },
     carouselText:{
-        color:"rgb(108,99,255)",
+        color:"#334257",
         padding:"0.5em",
         fontWeight:"600"
     }
 }))
 const LandingPage = ()=>{
     const history = useHistory()
-
+    const theme = useTheme()
     const classes = useStyles()
 
     useEffect(() => {

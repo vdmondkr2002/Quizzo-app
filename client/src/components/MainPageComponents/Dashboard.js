@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme)=>({
         alignItems:"center",
         position:"relative",
         height:"auto",
-        backgroundColor:"rgb(288,30,21)",
+        backgroundColor:theme.palette.primary.dark,
         padding:"0.5em 0 0.5em 0",
     },
     form:{
@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme)=>({
         // maxWidth: 350,
         // height:"500px",
         width:"100%",
-        backgroundColor:"rgba(255,230,2,0.2)"
+        backgroundColor:"#E8F6EF"
     },
     linkButton:{
         "&:hover":{
@@ -98,7 +98,7 @@ const useStyles = makeStyles((theme)=>({
     },
     mainPaper:{
         padding:"2em",
-        backgroundColor:"rgba(255,230,2,0.3)"
+        backgroundColor:"#E8F6EF"
     },
     takeQuizMain:{
         padding:"0.7em 1em",
@@ -260,10 +260,16 @@ const Dashboard = ()=>{
                             </Grid>
                         </Grid>
                     </Grid>
+                    {/* <Grid item xs={12}>
+                        
+                    </Grid> */}
+                    
+                    <Grid item sm={2}></Grid>
                     <Grid item xs={12} sm={8}>
-                    <Typography color="textSecondary" style={{fontWeight:"bold"}} variant="h4" component="h2">
-                        Popular Categories
-                    </Typography>
+                    <Typography color="textSecondary" style={{fontWeight:"bold",textAlign:"center"}} variant="h4" component="h2">
+                            Popular Categories
+                        </Typography>
+                    
                     <Divider></Divider>
                     <Carousel
                         responsive={responsive}
@@ -304,9 +310,7 @@ const Dashboard = ()=>{
                             }
                         </Carousel>
                     </Grid>
-                    <Grid item xs={12} sm={4} className={classes.card}>
-                        <img src={knowledgeImg} alt="Category wise"/>
-                    </Grid>
+                    <Grid item sm={2}></Grid>
                     
                     
                     

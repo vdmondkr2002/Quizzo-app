@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     sidebarPaper: {
         flexGrow: 1,
         padding: "1em",
-        backgroundColor: "rgba(255,255,100,0.3)"
+        backgroundColor: "#E8F6EF"
     },
     sidebarInnerGrid: {
         height: "30em"

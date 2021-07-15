@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
         position: "relative",
         height: "auto",
-        backgroundColor: "rgb(288,30,21)",
+        backgroundColor: theme.palette.primary.dark,
         padding: "0.5em 0 0.5em 0",
     },
     title: {
@@ -32,12 +32,12 @@ const useStyles = makeStyles((theme) => ({
         color: "white"
     },
     outerPaper: {
-        backgroundColor: theme.palette.primary.dark,
+        backgroundColor: "#E8F6EF",
         padding: "1em"
     },
     formPaper: {
         // backgroundColor:theme.palette.primary.dark,
-        backgroundColor: "#9F7FFD",
+        backgroundColor:  theme.palette.primary.light,
         padding: "1em"
     },
     questionsTitle: {
@@ -51,18 +51,18 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "flex-start"
     },
     inputField: {
-        color: '#fff'
+        color: '#0A1931'
     },
     MuiFocused: {
-        color: "#fff"
+        color: "#0A1931"
     },
     instrTitle:{
-        fontWeight: 600
+        fontWeight: 600,
+        fontSize: "1.3em"
     },
     instrPaper:{
         padding:"0.4em",
-        color:"white",
-        backgroundColor:"#9F7FFD"
+        backgroundColor:theme.palette.primary.main
     }
 }))
 const QuizInput = () => {

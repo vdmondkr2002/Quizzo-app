@@ -9,7 +9,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 
-import contriImg from '../../images/undraw_collaborators.svg'
+import contriImg from '../../images/Questions-rafiki.svg'
 import Alert from '../Utils/Alert'
 import { checkLoggedIn } from '../../actions/auth'
 
@@ -21,11 +21,19 @@ const useStyles = makeStyles((theme)=>({
         alignItems:"center",
         position:"relative",
         height:"auto",
-        backgroundColor:"rgb(288,30,21)",
+        backgroundColor:theme.palette.primary.dark,
         padding:"0.5em 0 0.5em 0",
         color:"white",
         borderRadius:"0.5em",
         fontWeight:"bold"
+    },
+    image:{
+        display:"flex",
+        
+    },
+    imagePaper:{
+        width:"70%",
+        marginLeft:"0",
     },
     root:{
         maxWidth:"700px",
@@ -173,15 +181,6 @@ const Form = () => {
     return (
         <Grid container>
             <Alert/>
-            <Grid item xs={12} sm={4}>
-                <Paper className={classes.root}>
-                    <CardMedia
-                        component="img"
-                        alt="Enlighten"
-                        image={contriImg}
-                    />
-                </Paper>
-            </Grid>
             <Grid item xs={12} sm={8}>
                 <Paper className={classes.root}>
                     <form 
@@ -349,7 +348,7 @@ const Form = () => {
                                         />
                                     </Grid>
                                     <Grid className={classes.btnContainer} item xs={12}>
-                                        <Button type="submit"  color="secondary" variant="contained">
+                                        <Button type="submit"  color="primary" variant="contained">
                                             <Typography>
                                                 Submit Question
                                             </Typography>
@@ -364,6 +363,16 @@ const Form = () => {
                     </form>
                 </Paper>
             </Grid>
+            <Grid item xs={12} sm={4} className={classes.image}>
+                <Paper className={clsx(classes.root,classes.imagePaper)}>
+                    <img 
+                        alt="Enlighten"
+                        src={contriImg}
+                        width="100%"
+                    />
+                </Paper>
+            </Grid>
+            
             
         </Grid>
             

@@ -17,7 +17,7 @@ const useStyles = makeStyles(() => ({
         height: "100%"
     },
     quizPaper: {
-        backgroundColor: "rgba(255,255,100,0.9)",
+        backgroundColor: "#E8F6EF",
         padding: "0.7em"
     },
     repDetails: {

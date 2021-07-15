@@ -40,14 +40,15 @@ const useStyles = makeStyles((theme)=>({
         alignItems:"center",
         position:"relative",
         height:"auto",
-        backgroundColor:"rgb(288,30,21)",
+        backgroundColor:theme.palette.primary.dark,
         padding:"0.5em 0 0.5em 0",
-        color:"white",
+        color:"#ffc",
         fontWeight:600
     },
     title:{
-        backgroundColor:"rgba(255,255,2,0.3)",
-        padding:"0.4em 0"
+        backgroundColor:theme.palette.primary.light,
+        padding:"0.4em 0",
+        color:"#334257"
     },
     paper:{
         display:"flex",
@@ -85,7 +86,7 @@ const useStyles = makeStyles((theme)=>({
         flexWrap: 'wrap',
     },
     ipFields:{
-        flexGrow:1
+        flexGrow:1,
     },
     submitBtn:{
         width:"100%"
@@ -186,7 +187,7 @@ const LoginPage = ()=>{
                                 />
                         </Grid>
                         <Grid item xs={12} sm={8} className={classes.formContainer}>
-                            <Paper color="primary" className={classes.formPaper}>
+                            {/* <Paper color="primary" className={classes.formPaper}> */}
                                 {
                                     loginToggle?(
                                         <Paper className={classes.title}>
@@ -419,7 +420,7 @@ const LoginPage = ()=>{
                                 
                             )
                         }         
-                            </Paper>
+                            {/* </Paper> */}
                         </Grid>
                     </Grid>
                       

@@ -3,19 +3,19 @@ import { createMuiTheme } from '@material-ui/core/styles';
 export const theme = createMuiTheme({
   palette: {
     primary: {
-      light: '#9F7FFD',
-      main: '#7A51F5',
-      dark: '#662583',
-      contrastText: '#fff',
+      light: '#DA9FF9',
+      main: '#B088F9',
+      dark: '#7952B3',
+      contrastText: '#000',
     },
     secondary: {
-      light: '#ff7961',
-      main: '#f44336',
-      dark: '#ba000d',
+      light: '#BEDCFA',
+      main: '#98ACF8',
+      dark: '#94D0CC',
       contrastText: '#fff',
     },
     text:{
-        primary:'#333',
+        primary:'#0A1931',
         secondary:'#777',
         disabled:'#999'
     },
@@ -31,3 +31,5 @@ export const theme = createMuiTheme({
       fontFamily: 'Raleway, Arial' 
   }
 });
+
+// DA9FF9

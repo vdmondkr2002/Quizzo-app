@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     sidebarPaper: {
         flexGrow: 1,
         padding: "1em",
-        backgroundImage: "linear-gradient(180deg, rgb(108,99,255), rgb(102,37,131))"
+        backgroundImage: "linear-gradient(180deg, #BEDCFA, #7952B3)"
     },
     sidebarInnerGrid: {
         height: "100%"
@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     },
     dashboardTitle: {
         padding: "0.5em",
-        backgroundColor: "rgb(288,30,21)",
+        backgroundColor: theme.palette.primary.dark,
         borderRadius: "5px",
         fontWeight: "600",
         color: "white"
@@ -66,11 +66,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: "600",
         textAlign: "center"
     },
-    // qContainer: {
-    //     position: "relative"
-    // },
     cardImg: {
-        // position: 'absolute',
         width: "max-content",
         height: "max-content",
         bottom: 0,
@@ -98,7 +94,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
         padding: "0.5em 1em",
         width: "fit-content",
-        backgroundColor: "rgba(255,255,2,0.3)",
+        backgroundColor: "#DBE6FD",
         borderRadius: "10px",
         flexGrow: 1
     },
@@ -277,14 +273,14 @@ const QuizQuestions = ({ match }) => {
                                     <Grid item xs={12} className={classes.dashboardItems}>
                                         <Paper className={classes.circlePaper}>
                                             <Typography className={classes.circleTitle}>Solved</Typography>
-                                            <CircularProgressWithLabel style={{ color: "rgba(255,255,2,0.3)" }} noOfqs={Number(noOfqs)} value={solved * 100 / noOfqs} />
+                                            <CircularProgressWithLabel style={{ color: "#52006A" }} noOfqs={Number(noOfqs)} value={solved * 100 / noOfqs} />
                                         </Paper>
 
                                     </Grid>
                                     <Grid item xs={12} className={classes.dashboardItems}>
                                         <Paper className={classes.circlePaper}>
                                             <Typography className={classes.circleTitle}>Timer</Typography>
-                                            <CircularProgressWithClockQuiz style={{ color: "rgba(255,255,2,0.3)" }} noOfqs={Number(noOfqs)} value={progress} />
+                                            <CircularProgressWithClockQuiz style={{ color: "#52006A" }} noOfqs={Number(noOfqs)} value={progress} />
                                         </Paper>
 
                                     </Grid>
