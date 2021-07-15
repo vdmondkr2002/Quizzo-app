@@ -6,6 +6,9 @@
 # Description
 Quizzo is the platform where you can take quizzes and save the scores update and even contribute questions.
 
+## Project Demo
+![Demo gif](https://raw.githubusercontent.com/vdmondkr2002/Quizzo-app/main/Proj-demo-1.gif)
+
 ## Tech Stack Used
 #### 1.React-Redux
 #### 2.Node JS-Express
