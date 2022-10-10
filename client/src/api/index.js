@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-const API = axios.create({ baseURL: 'https://quizzo-web-v1.herokuapp.com/' });
+const API = axios.create({ baseURL: 'https://quizzo-web-api.onrender.com/' });
 // const API = axios.create({ baseURL: 'http://localhost:5000/' });
 
 API.interceptors.request.use((req) => {
