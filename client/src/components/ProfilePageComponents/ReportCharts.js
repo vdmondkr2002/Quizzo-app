@@ -38,9 +38,9 @@ const ReportCharts = () => {
     }, [reportValue])
 
     useEffect(() => {
-        if (sectionReport.length !== 0) {
+        if (sectionReport?.length !== 0) {
             setChartData({
-                labels: sectionReport.map(rep => rep.label),
+                labels: sectionReport?.map(rep => rep.label),
                 datasets: [
                     {
                         label: "Your Daily Report",
@@ -52,7 +52,7 @@ const ReportCharts = () => {
                 ]
             })
         }
-    }, [sectionReport], [reportValue])
+    }, [sectionReport])
 
 
     const handleClickReportRadio = (e) => {
