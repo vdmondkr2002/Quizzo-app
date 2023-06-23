@@ -36,6 +36,7 @@ Step2 -
 Install the server dependencies:
 ```
 cd Quizzo-app
+cd server
 npm install
 ```
 
