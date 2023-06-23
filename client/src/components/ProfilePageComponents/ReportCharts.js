@@ -32,8 +32,6 @@ const ReportCharts = () => {
             dispatch(getWeeklyReport())
         } else if (reportValue === "monthly") {
             dispatch(getMonthlyReport())
-        } else if (reportValue === "daily") {
-            dispatch(getDailyReport())
         }
     }, [reportValue])
 
@@ -84,7 +82,7 @@ const ReportCharts = () => {
                                 </Grid>
                             </Grid>
                         </RadioGroup>
-                        <Line data={chartData} />
+                        {/* <Line data={chartData} /> */}
                     </Paper>
                 ) : null
             }
