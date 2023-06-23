@@ -12,7 +12,7 @@ exports.getquizReport=async(req,res)=>{
         reports.reverse()
         return res.status(200).json(reports)
     }catch(err){
-        return res.status(500).json({msg:"Something went wrong in 1 "})
+        return res.status(500).json({msg:"Something went wrong"})
     }
 }
 
@@ -43,7 +43,7 @@ exports.postQuizReport = async(req,res)=>{
         // return res.status(200).json({data:"data"})
         return res.status(200).json(quizReport)
     }catch(err){
-        return res.status(500).json({msg:"Something went wrong in 2"})
+        return res.status(500).json({msg:"Something went wrong"})
     }
 }
 
@@ -57,7 +57,7 @@ exports.getquizReportById = async(req,res)=>{
         return res.status(200).json(report)
     }catch(err){
         console.log(err)
-        return res.status(500).json({msg:"Something went wrong in 3"})
+        return res.status(500).json({msg:"Something went wrong"})
     }
 }
 

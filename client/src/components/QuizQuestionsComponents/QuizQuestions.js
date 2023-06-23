@@ -177,7 +177,7 @@ const parseInputString = (input)=>{
     m["&reg;"] = "®";
     m["&copy;"] = "©";
     m["&frasl;"] = "⁄";
-    m['&#39'] = "'";
+    m['&#39;'] = "'";
     // Output string
     let output = "";
  

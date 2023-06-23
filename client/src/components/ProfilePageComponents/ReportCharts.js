@@ -20,7 +20,7 @@ const ReportCharts = () => {
     const theme = useTheme()
     const classes = useStyles()
     const dispatch = useDispatch()
-    const sectionReport = useSelector(state => state.sectionReport)
+    const sectionReport = useSelector(state => state.sectionReports)
     const [reportValue, setReportValue] = useState("daily")
     const [chartData, setChartData] = useState({})
 
