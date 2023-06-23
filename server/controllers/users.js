@@ -89,17 +89,19 @@ exports.signIn = async(req,res)=>{
         
         //Check email
         const oldUser = await User.findOne({email:email})
+       
         if(!oldUser)
             return res.status(404).json({msg:"User doesn't exist" })
-        
+        console.log(oldUser.userName)
         if(!oldUser.verified)
             return res.status(400).json({msg:"Please verify your account first! Check the link sent on mail during registration"})
 
-        //Check passowrd
-        const isMatch = await bcrypt.compare(password,oldUser.password)
-
-        if(!isMatch)
-            return res.status(400).json({msg:"Invalid credentials"})
+        //Verify if passowrd is correct
+        const isMatch = passwordHash.verify(password,oldUser.password)
+        
+        //if password doesn't match
+        if (!isMatch)
+            return res.status(400).json({ msg: "Invalid credentials" })
         
         const payload ={
             email:oldUser.email,
