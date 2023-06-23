@@ -37,7 +37,11 @@ const ReportCharts = () => {
         }
     }, [reportValue])
 
+    useEffect(()=>{
+        console.log(sectionReport)
+    },[])
     useEffect(() => {
+        console.log("Helo")
         console.log(sectionReport)
         if (sectionReport.length !== 0) {
             setChartData({
