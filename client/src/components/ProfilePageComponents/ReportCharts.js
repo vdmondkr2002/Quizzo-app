@@ -20,7 +20,7 @@ const ReportCharts = () => {
     const theme = useTheme()
     const classes = useStyles()
     const dispatch = useDispatch()
-    const sectionReport = useSelector(state => state.sectionReports)
+    const sectionReport = useSelector(state => state.sectionReport)
     const [reportValue, setReportValue] = useState("daily")
     const [chartData, setChartData] = useState({})
 
@@ -44,7 +44,7 @@ const ReportCharts = () => {
                 datasets: [
                     {
                         label: "Your Daily Report",
-                        data: sectionReport.map(rep => rep.data),
+                        data: sectionReport?.map(rep => rep.data),
                         fill: false,
                         backgroundColor: theme.palette.primary.dark,
                         borderColor: theme.palette.primary.light
@@ -62,7 +62,7 @@ const ReportCharts = () => {
     return (
         <>
             {
-                sectionReport.length !== 0 ? (
+                sectionReport?.length !== 0 ? (
                     <Paper className={classes.graphPaper}>
                         <RadioGroup aria-label="gender" name="gender1" value={reportValue} onChange={handleClickReportRadio}>
                             <Grid container>
