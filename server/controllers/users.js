@@ -66,7 +66,7 @@ exports.signUp = async(req,res)=>{
             Welcome to Quizzo, ${userName}!\n
             To complete your Sign Up and To access your account, Please verify your email address,within a day:\n
             ${email}\n
-            http://localhost:3000/verifyMail/${confirmationCode} \n
+            https://quizzo-app-v1.vercel.app/verifyMail/${confirmationCode} \n
        
         `
         const receiverMail = email
@@ -135,7 +135,7 @@ exports.sendResetEmail = async(req,res)=>{
         const subject = "[Quizzo] Link Reset Your password"
         const html = `
         To reset Your password follow the link below:\n
-        https://localhost:3000/resetPassword/${resetCode} \n
+        https://quizzo-app-v1.vercel.app/resetPassword/${resetCode} \n
         If you haven't made this request. simply ignore the mail and no changes will be made
         `
         

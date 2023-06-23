@@ -1,7 +1,8 @@
 const axios = require('axios')
 
 // const API = axios.create({ baseURL: 'https://quizzo-web-api.onrender.com/' });
-const API = axios.create({ baseURL: 'http://localhost:5000/' });
+// const API = axios.create({ baseURL: 'http://localhost:5000/' });
+const API = axios.create({ baseURL: 'https://quizzo-app-api.vercel.app/' });
 
 API.interceptors.request.use((req) => {
     if (localStorage.getItem('quizToken')) {
