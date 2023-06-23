@@ -38,13 +38,13 @@ const ReportCharts = () => {
     }, [reportValue])
 
     useEffect(() => {
-        if (sectionReport?.length !== 0) {
+        if (sectionReport.length !== 0) {
             setChartData({
-                labels: sectionReport?.map(rep => rep.label),
+                labels: sectionReport.map(rep => rep.label),
                 datasets: [
                     {
                         label: "Your Daily Report",
-                        data: sectionReport?.map(rep => rep.data),
+                        data: sectionReport.map(rep => rep.data),
                         fill: false,
                         backgroundColor: theme.palette.primary.dark,
                         borderColor: theme.palette.primary.light
@@ -62,7 +62,7 @@ const ReportCharts = () => {
     return (
         <>
             {
-                sectionReport?.length !== 0 ? (
+                sectionReport.length !== 0 ? (
                     <Paper className={classes.graphPaper}>
                         <RadioGroup aria-label="gender" name="gender1" value={reportValue} onChange={handleClickReportRadio}>
                             <Grid container>
