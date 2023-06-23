@@ -1,5 +1,3 @@
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcryptjs')
 const Question = require('../models/Question')
 const Category = require('../models/Category')
 const User = require('../models/User')

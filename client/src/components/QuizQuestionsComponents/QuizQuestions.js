@@ -165,6 +165,63 @@ const OptionRadio = withStyles({
 })((props) => <Radio color="default" {...props} />);
 
 
+const parseInputString = (input)=>{
+    const m = {}
+    m['&nbsp;'] = " ";
+    m['&quot;']='"';
+    m["&amp;"] = "&";
+    m["&gt;"] = ">";
+    m["&lt;"] = "<";
+    m["&apos;"] = "‘";
+    m["&quot;"] = "“";
+    m["&reg;"] = "®";
+    m["&copy;"] = "©";
+    m["&frasl;"] = "⁄";
+    m['&#39'] = "'";
+    // Output string
+    let output = "";
+ 
+    // Traverse the string
+    let i = 0;
+    while (i < input.length) {
+      // If any ampersand is occurred
+      if (input[i] === '&') {
+        let buffer = "";
+ 
+        while (i < input.length) {
+          buffer += input[i];
+ 
+          // If any semicolon is occurred
+          if (input[i] === ';' && m[buffer]) {
+            // Append the parsed character
+            output += m[buffer];
+ 
+            // Clear the buffer
+            buffer = "";
+            i++;
+            break;
+          } else {
+            i++;
+          }
+        }
+ 
+        if (i >= input.length) {
+          output += buffer;
+          break;
+        }
+ 
+        i--;
+      } else {
+        output += input[i];
+      }
+ 
+      i++;
+    }
+ 
+    // Return the parsed string
+    return output;
+  }
+
 const QuizQuestions = ({ match }) => {
     const classes = useStyles()
     const dispatch = useDispatch()
@@ -215,7 +272,9 @@ const QuizQuestions = ({ match }) => {
 
     useEffect(() => {
         if (quizqs.data !== undefined)
-            setQuestions(quizqs.data)
+            setQuestions(quizqs.data.map(d=>{
+                return {...d,question:parseInputString(d.question)}
+            }))
     }, [quizqs])
 
     useEffect(() => {

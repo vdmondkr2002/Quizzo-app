@@ -9,6 +9,7 @@ export const signUp = (formData,history)=>async(dispatch)=>{
 
         const {data} = await api.signUp(formData)
         dispatch({type:SET_ALERT,payload:{msg:data.msg,type:"success"}})
+        
     } catch (err) {
         if(err.response){
             const data = err.response.data

@@ -1,11 +1,11 @@
 const jwt = require('jsonwebtoken')
 const decode = require('jwt-decode')
-const bcrypt = require('bcryptjs')
+const passwordHash = require('password-hash')
 const User = require('../models/User')
 const Question = require('../models/Question')
 const { regValidator, loginValidator,resetMailValidator,resetPassValidator, editPassValidator } = require('../validators/joi-validator')
 const mongoose = require('mongoose')
-const sendEmail = require('../Utils/sendEmail')
+const sendEmail2 = require('../Utils/sendEmail2')
 
 exports.getCurrentUser = async(req,res)=>{
     try{
@@ -45,8 +45,7 @@ exports.signUp = async(req,res)=>{
             
 
         //Get the hashed password
-        const salt = await bcrypt.genSalt(10)
-        const hashedPassword = await bcrypt.hash(password,salt)
+        const hashedPassword = passwordHash.generate(password)
         
         
         
@@ -64,16 +63,15 @@ exports.signUp = async(req,res)=>{
         // const subject = "Hello"
         // const body = "Hello"
         const html = `
-        <h3>Welcome to Quizzo, ${userName}!</h3> 
-        <div>To complete your Sign Up and To access your account, Please verify your email address,within a day:</div>
-        <a href="#">${email}</a>
-        <div>
-        <a href="https://quizzo-v1.netlify.app/verifyMail/${confirmationCode}"> Verify Email Address </a>
-        </div>
+            Welcome to Quizzo, ${userName}!\n
+            To complete your Sign Up and To access your account, Please verify your email address,within a day:\n
+            ${email}\n
+            http://localhost:3000/verifyMail/${confirmationCode} \n
+       
         `
         const receiverMail = email
         console.log("Hello")
-        sendEmail({html,subject,receiverMail})
+        sendEmail2({html,subject,receiverMail})
         // console.log(token);
         return res.status(200).json({msg:"A verification mail has been sent to the registered email"})
     } catch (err) {
@@ -136,15 +134,13 @@ exports.sendResetEmail = async(req,res)=>{
         const resetCode = jwt.sign(payload,process.env.TOKEN_SECRET,{expiresIn:"30m"})
         const subject = "[Quizzo] Link Reset Your password"
         const html = `
-        <h3>To reset Your password follow the link below:</h3>
-        <div>
-        <a href="https://quizzo-v1.netlify.app/resetPassword/${resetCode}">Reset Your password</a>
-        </div>
-        <div>If you haven't made this request. simply ignore the mail and no changes will be made</div>
+        To reset Your password follow the link below:\n
+        https://localhost:3000/resetPassword/${resetCode} \n
+        If you haven't made this request. simply ignore the mail and no changes will be made
         `
         
         const receiverMail = req.body.email
-        sendEmail({html,subject,receiverMail})
+        sendEmail2({html,subject,receiverMail})
         return res.status(200).json({msg:"Mail sent with link to reset password"})
     }catch(err){
         return res.status(500).json({msg:"Something went wrong.."})
@@ -172,8 +168,7 @@ exports.resetPassword = async(req,res)=>{
 
 
         //Get the hashed password
-        const salt = await bcrypt.genSalt(10)
-        const hashedPassword = await bcrypt.hash(password,salt)
+        const hashedPassword = passwordHash.generate(password)
 
         const updatedUser = await User.findOneAndUpdate({_id:decodedData.id},{password:hashedPassword},{new:true})
 
@@ -299,8 +294,7 @@ exports.editPassword = async(req,res)=>{
         }
 
         //Get the hashed password
-        const salt = await bcrypt.genSalt(10)
-        const hashedPassword = await bcrypt.hash(password,salt)
+        const hashedPassword = passwordHash.generate(password)
 
         await User.findOneAndUpdate({_id:req.userId},{password:hashedPassword},{new:true})
 

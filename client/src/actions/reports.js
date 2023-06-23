@@ -16,6 +16,7 @@ export const getReport = ()=>async(dispatch)=>{
 export const getReportById = (id)=>async(dispatch)=>{
     try{
         const {data} = await  api.getReportById(id)
+        console.log("Helo")
         console.log(data)
         dispatch({type:FETCH_ALL,payload:data})
     }catch(err){

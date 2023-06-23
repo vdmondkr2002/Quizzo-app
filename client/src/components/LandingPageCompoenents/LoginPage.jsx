@@ -96,6 +96,7 @@ const useStyles = makeStyles((theme)=>({
 const LoginPage = ()=>{
     const classes = useStyles()
     const user = useSelector(state=>state.authData)
+    const alert = useSelector(state=>state.alert)
 
     const [formData,setFormData] = useState(initialState)
 
@@ -116,6 +117,13 @@ const LoginPage = ()=>{
     //         history.push('/dashboard')
     // },[user])
 
+    useEffect(()=>{
+        if(alert){
+            if(alert.type==="success"){
+                setLoginToggle(true)
+            }
+        }
+    },[alert])
 
 
     const handleSubmit = (e)=>{
@@ -125,7 +133,7 @@ const LoginPage = ()=>{
         else
             dispatch(signUp(formData,history))
         
-        setFormData({...formData,userName:'',email:'',confirmPassword:'',password:'',firstName:'',lastName:'',bio:''})
+        // setFormData({...formData,userName:'',email:'',confirmPassword:'',password:'',firstName:'',lastName:'',bio:''})
 
     }
 
