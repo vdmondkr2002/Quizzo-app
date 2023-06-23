@@ -38,6 +38,7 @@ const ReportCharts = () => {
     }, [reportValue])
 
     useEffect(() => {
+        console.log(sectionReport)
         if (sectionReport.length !== 0) {
             setChartData({
                 labels: sectionReport.map(rep => rep.label),
