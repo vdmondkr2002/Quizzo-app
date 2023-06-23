@@ -14,6 +14,7 @@ connectDB()
 app.get('/',(req,res)=>{
   res.send('Quizzo API running')
 })
+
 app.use((req, res, next) => {
     // res.append("Access-Control-Allow-Origin", "https://quizzo-v1.netlify.app");
     res.append("Access-Control-Allow-Origin", "http://localhost:3000");
