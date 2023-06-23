@@ -8,7 +8,7 @@ import { Container, Grid,AppBar,Tabs,useTheme,Tab, makeStyles, Paper, Typography
 import SwipeableViews from 'react-swipeable-views';
 
 import {getUserData} from '../../actions/user'
-import { getMonthlyReport, getReport} from '../../actions/reports'
+import { getMonthlyReport, getReport, getWeeklyReport} from '../../actions/reports'
 import Alert from '../Utils/Alert'
 import UserDashboard from './UserDashboard'
 import PastQuizzes from './PastQuizzes'
@@ -166,10 +166,13 @@ const ProfilePage = ()=>{
     const user = useSelector(state=>state.userData)
     const topscorers = useSelector(state=>state.toppers)
     const topcontributors = useSelector(state=>state.contributors)
+    const sectionReport = useSelector(state => state.sectionReport)
 
     const [tabValue,setTabValue] = useState(0)
     
-    
+    useEffect(() => {
+        dispatch(getWeeklyReport())
+    }, [])
 
     useEffect(()=>{
         if(localStorage.getItem('quizToken')){
