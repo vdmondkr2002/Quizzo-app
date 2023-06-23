@@ -32,28 +32,28 @@ const ReportCharts = () => {
             dispatch(getWeeklyReport())
         } else if (reportValue === "monthly") {
             dispatch(getMonthlyReport())
+        }else{
+            dispatch(getDailyReport())
         }
     }, [reportValue])
 
-    useEffect(()=>{
-        console.log(sectionReport)
-    },[])
+    
     useEffect(() => {
         console.log("Helo")
         console.log(sectionReport)
         if (sectionReport.length !== 0) {
-            // setChartData({
-            //     labels: sectionReport.map(rep => rep.label),
-            //     datasets: [
-            //         {
-            //             label: "Your Daily Report",
-            //             data: sectionReport.map(rep => rep.data),
-            //             fill: false,
-            //             backgroundColor: theme.palette.primary.dark,
-            //             borderColor: theme.palette.primary.light
-            //         }
-            //     ]
-            // })
+            setChartData({
+                labels: sectionReport.map(rep => rep.label),
+                datasets: [
+                    {
+                        label: "Your Daily Report",
+                        data: sectionReport.map(rep => rep.data),
+                        fill: false,
+                        backgroundColor: theme.palette.primary.dark,
+                        borderColor: theme.palette.primary.light
+                    }
+                ]
+            })
             console.log("Helol")
             console.log(sectionReport)
         }
@@ -82,7 +82,12 @@ const ReportCharts = () => {
                                 </Grid>
                             </Grid>
                         </RadioGroup>
-                        {/* <Line data={chartData} /> */}
+                        {
+                            chartData.labels?(
+                                <Line data={chartData} />
+                            ):null
+                        }
+                        
                     </Paper>
                 ) : null
             }
